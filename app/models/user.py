@@ -10,12 +10,20 @@ class User(db.Model, UserMixin):
         __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
-    first_name = db.Column(db.string(40), nullable=False)
-    last_name = db.Column(db.string(40), nullable=False)
+    first_name = db.Column(db.String(40), nullable=False)
+    last_name = db.Column(db.String(40), nullable=False)
     username = db.Column(db.String(40), nullable=False, unique=True)
     profile_photo = db.Column(db.String(1000))
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
+
+
+
+    method = db.relationship("Method", cascade='all, delete-orphan', back_populates = 'user')
+
+    # transaction_sender = db.relationship("Transaction", cascade='all, delete-orphan', back_populates = 'user_sender')
+
+    # transaction_recipient = db.relationship("Transaction", cascade='all, delete-orphan', back_populates = 'user_recipient')
 
     @property
     def password(self):
