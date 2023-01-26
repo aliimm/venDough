@@ -1,8 +1,8 @@
 """create owners table
 
-Revision ID: ffdc0a98111c
+Revision ID: c25f332146e2
 Revises:
-Create Date: 2023-01-25 14:05:41.040569
+Create Date: 2023-01-25 16:07:32.775216
 
 """
 from alembic import op
@@ -13,9 +13,8 @@ import os
 environment = os.getenv("FLASK_ENV")
 SCHEMA = os.environ.get("SCHEMA")
 
-
 # revision identifiers, used by Alembic.
-revision = 'ffdc0a98111c'
+revision = 'c25f332146e2'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -41,9 +40,9 @@ def upgrade():
     op.create_table('methods',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=False),
-    sa.Column('card_number', sa.Integer(), nullable=False),
+    sa.Column('card_number', sa.String(), nullable=False),
     sa.Column('expiration', sa.Date(), nullable=False),
-    sa.Column('cvv', sa.Integer(), nullable=False),
+    sa.Column('cvv', sa.String(), nullable=False),
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ondelete='CASCADE'),
     sa.PrimaryKeyConstraint('id')
     )
