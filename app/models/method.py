@@ -18,11 +18,11 @@ class Method(db.Model):
 
     transaction = db.relationship('Transaction', back_populates='method')
 
-def to_dict(self):
-    return {
-        'id': self.id,
-        'user_id': self.user_id,
-        'card_number': self.card_number,
-        'expiration': self.expiration,
-        'cvv': self.cvv,
-    }
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'user_id': self.user_id,
+            'card_number': self.card_number,
+            'expiration': self.expiration,
+            'cvv': self.cvv,
+        }
