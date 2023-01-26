@@ -8,9 +8,9 @@ class Method(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id'), ondelete='CASCADE'), nullable=False)
-    card_number = db.Column(db.Integer, nullable=False)
+    card_number = db.Column(db.String, nullable=False)
     expiration = db.Column(db.Date, nullable=False)
-    cvv = db.Column(db.Integer, nullable=False)
+    cvv = db.Column(db.String, nullable=False)
 
 
 
