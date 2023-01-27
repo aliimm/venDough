@@ -8,6 +8,8 @@ import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
 import { authenticate } from './store/session';
+import PaymentMethods from './components/payment';
+import Sidebar from './components/sidebar';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -27,6 +29,7 @@ function App() {
   return (
     <BrowserRouter>
       <NavBar />
+      <Sidebar/>
       <Switch>
         <Route path='/login' exact={true}>
           <LoginForm />
@@ -42,6 +45,9 @@ function App() {
         </ProtectedRoute>
         <Route path='/' exact={true} >
           <h1>My Home Page</h1>
+        </Route>
+        <Route path='/:id/payment-methods' exact={true} >
+          <PaymentMethods />
         </Route>
       </Switch>
     </BrowserRouter>
