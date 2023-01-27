@@ -9,10 +9,12 @@ class Method(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id'), ondelete='CASCADE'), nullable=False)
     card_number = db.Column(db.String, nullable=False)
-    expiration = db.Column(db.Date, nullable=False)
+    expiration = db.Column(db.DateTime, nullable=False)
     cvv = db.Column(db.String, nullable=False)
 
-
+    @property
+    def formatted_month_and_year(self):
+        return self.month_and_year.strftime("%m/%Y")
 
     user = db.relationship('User', back_populates='method')
 
