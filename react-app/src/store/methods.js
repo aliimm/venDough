@@ -30,13 +30,30 @@ const deleteMethod = (method) => ({
     method
 })
 
+export const deleteAMethod = (methodId) => async (dispatch) => {
 
-export const createMethod = (newMethod) => async (dispatch) => {
-    console.log('thunk', newMethod)
-    const response = await fetch('/api/payments/', {
-        method: 'POST',
-        body: newMethod
+    const response = await fetch(`/api/payments/${methodId}`, {
+        method: 'DELETE'
     })
+
+    if (response.ok) {
+        const deletionResponse = await response.json()
+
+        dispatch(deleteMethod(methodId))
+        return deletionResponse
+    }
+}
+
+
+export const createMethod = (newMethod, userId) => async (dispatch) => {
+    console.log('thunk', newMethod)
+    console.log('!!!!', JSON.stringify(newMethod))
+    const response = await fetch(`/api/payments/${userId}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(newMethod)
+    })
+    console.log(response)
     // console.log('err?', response)
 
     if (response.ok) {
@@ -70,16 +87,36 @@ export const getOnePayment = (id) => async (dispatch) => {
 };
 
 
+export const updateACard = (payload, methodId) => async dispatch => {
+    const response = await fetch(`/api/payments/${methodId}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+    })
+    if (response.ok) {
+        const editedpaymentMethod = await response.json()
+        dispatch(updateMethod(editedpaymentMethod))
+        return editedpaymentMethod
+    }
+}
 
 
-
-const initialState = { paymentmethods: {}, onePaymentMethod: {} }
+const initialState = { methods: {}, onePaymentMethod: {} }
 
 
 const paymentMethodReducer = (state = initialState, action) => {
     switch (action.type) {
-        case GET_ALL_METHODS: {
 
+        case POST_METHOD: {
+            const newState = {...state}
+            const newObject = {...state.methods}
+            newObject[action.method.id] = action.method
+            newState.methods = newObject
+            return newState
+          }
+
+
+        case GET_ALL_METHODS: {
             const newState = { ...state }
             const newObject = {}
             action.methods.methods.forEach(method => {
@@ -89,10 +126,18 @@ const paymentMethodReducer = (state = initialState, action) => {
             newState.methods = newObject
             return newState
         }
-        case GET_ONE_METHOD:{
-            const newState = { ...state }
+        case GET_ONE_METHOD: {
+            const newState = { ...state, onePaymentMethod:{...state.onePaymentMethod}}
             const specificMethod = action.method
             newState.onePaymentMethod = specificMethod
+            return newState
+        }
+
+        case UPDATE_METHOD: {
+            const newState = { ...state, onePaymentMethod: { ...state.onePaymentMethod } }
+            console.log("NEW stATE", newState)
+            console.log("THIS IS THE ID",action.method.id)
+            newState.onePaymentMethod[action.method.id] = action.method;
             return newState
         }
 

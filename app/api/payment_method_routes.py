@@ -43,8 +43,12 @@ def create_payment(id):
 
     form = PaymentForm()
     form['csrf_token'].data = request.cookies['csrf_token']
+
+    print('made it here', form)
     if form.validate_on_submit():
         new_method = Method(user_id = id)
+        # new_method = Method()
+
         form.populate_obj(new_method)
 
         db.session.add(new_method)
@@ -53,6 +57,7 @@ def create_payment(id):
         return new_method.to_dict(), 200
 
     if form.errors:
+        print(form.errors)
         return {
             "errors": form.errors
         }, 400
@@ -60,14 +65,13 @@ def create_payment(id):
 # UPDATE SPECIFIC PAYMENT METHOD BY METHODID
 @payment_method_routes.route('/<int:methodId>', methods=['PUT'])
 # @login_required
-def update_song(methodId):
+def update_payment(methodId):
 
     specificMethod = Method.query.get(methodId)
     form = PaymentForm()
     form['csrf_token'].data = request.cookies['csrf_token']
 
     if form.validate_on_submit():
-
         form.populate_obj(specificMethod)
         db.session.add(specificMethod)
         db.session.commit()

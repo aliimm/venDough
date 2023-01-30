@@ -5,64 +5,40 @@
     padding: 20px;
     border-radius: 12px;
     display: flex;
-    /* justify-content: center; */
-
 }
-
 
 .bank-name-virutal-card{
   display: flex;
   font-weight: bolder;
-
-  /* justify-self: baseline; */
-
-
 }
+
 .card-info-container{
     width: 100%;
-
-
+    position: relative;
 }
-
 
 .creditcardlastfour{
-    display: flex;
-    justify-content: left;
+    position: absolute;
+    bottom: 0;
+    left: 0;
     font-size: 18px;
-    margin-top: 20px;
     font-family: Scto Grotesk A Bold;
     font-weight: bolder;
-    /* justify-content: last baseline; */
 }
-
 
 .virtual-visa{
     width: 86px;
-    height: 53px;
     display: flex;
     justify-content: flex-end;
 
-    /* width: 86px;
-    height: 53px;
-    display: flex;
-    margin-left: 0;
-    margin-right: 0; */
-    /* justify-content: flex-end; */
 }
+
 .single-image-div{
-    display: flex;
-    align-self: flex-end;
-    padding-left: 85px;
-    margin-bottom: 15px;
-    /* justify-content: right; */
-}
+    position: absolute;
+    bottom: 0;
+    right: 0;
 
-.image-div-container{
-    width:100%;
-    display: flex;
-    margin-top: 100px;
 }
-
 
 .specifcpaymentcontainer{
     width: 100%;
@@ -71,7 +47,6 @@
     align-items: center;
 }
 
-
 .sending-money{
     margin-top: 5px;
     width:315px;
@@ -79,10 +54,8 @@
     justify-content: space-between;;
 }
 
-
 .no-fee-text{
     font-weight: bolder;
-
 }
 
 .sendingMoney-text{
@@ -111,8 +84,6 @@
     background-color: #fff;
     font-size: 18px;
     font-weight: bold;
-    /* box-shadow: 0 0 0 1px #0074de inset; */
-
 }
 
 .Remove-button:hover{
@@ -121,7 +92,8 @@
     cursor: pointer;
 }
 
-.edit-button{
+
+.Update.Card.delete-and-edit{
     width:300px;
     height: 45px;
     border-radius: 20px;
@@ -133,9 +105,8 @@
     margin-bottom: 9px;
 }
 
-.edit-button:hover {
+.Update.Card.delete-and-edit:hover{
     background-color: #0074de;;
     color: white;
     cursor: pointer;
-
 }
