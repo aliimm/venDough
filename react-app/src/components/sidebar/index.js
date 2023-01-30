@@ -1,23 +1,42 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import './sidebar.css'
+
+
+
 
 
 const Sidebar = () => {
 
-    const userId = useSelector(state => state.session.user.id)
+    const session = useSelector(state => state.session.user)
+
 
 
     // if (!user) return null
 
 
     return (
-        <div>
-            <NavLink to={`/${userId}/payment-methods`}>
+        <div className='sidebar'>
+            <div className='Profile-section'>
+                <div>Hi, {session.first_name}</div>
+                <div>@{session.username}</div>
 
-                hrl
+
+            </div>
+
+
+
+
+            <NavLink to={`/${session.id}/payment-methods`}>
+                Payment Methods
             </NavLink>
         </div>
+
+
+
+
+
     )
 
 

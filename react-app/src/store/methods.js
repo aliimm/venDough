@@ -1,4 +1,5 @@
 const GET_ALL_METHODS = 'method/GET_ALL_METHODS'
+const GET_ONE_METHOD = 'method/GET_ONE_METHOD'
 const POST_METHOD = 'method/POST_METHODS'
 const UPDATE_METHOD = 'method/UPDATE_METHOD'
 const DELETE_METHOD = 'method/DELETE_METHOD'
@@ -12,6 +13,11 @@ const postMethods = (method) => ({
 const getAllMethods = (methods) => ({
     type: GET_ALL_METHODS,
     methods
+})
+
+const getOneMethod = (method) => ({
+    type: GET_ONE_METHOD,
+    method
 })
 
 const updateMethod = (method) => ({
@@ -52,7 +58,22 @@ export const getAllPayment = (id) => async (dispatch) => {
 };
 
 
-const initialState = { paymentmethods: {} }
+export const getOnePayment = (id) => async (dispatch) => {
+    const response = await fetch(`/api/payments/${id}/specific`);
+
+    if (response.ok) {
+        const method = await response.json();
+
+        dispatch(getOneMethod(method));
+    }
+    return response
+};
+
+
+
+
+
+const initialState = { paymentmethods: {}, onePaymentMethod: {} }
 
 
 const paymentMethodReducer = (state = initialState, action) => {
@@ -61,7 +82,6 @@ const paymentMethodReducer = (state = initialState, action) => {
 
             const newState = { ...state }
             const newObject = {}
-            // console.log(action.methods.methods)
             action.methods.methods.forEach(method => {
                 newObject[method.id] = method
             })
@@ -69,6 +89,15 @@ const paymentMethodReducer = (state = initialState, action) => {
             newState.methods = newObject
             return newState
         }
+        case GET_ONE_METHOD:{
+            const newState = { ...state }
+            const specificMethod = action.method
+            newState.onePaymentMethod = specificMethod
+            return newState
+        }
+
+
+
         default:
             return state
     }

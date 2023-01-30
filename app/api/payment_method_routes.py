@@ -20,6 +20,21 @@ def all_payment_methods(id):
     return {'methods' :[payment.to_dict() for payment in payment]} , 200
 
 
+##Get ONE SPECFIC CARD
+@payment_method_routes.route('/<int:id>/specific')
+def payment_details(id):
+
+    current_paymentform = Method.query.get(id)
+
+    if not current_paymentform:
+        return {"errors": "Method not found"}, 404
+
+    print(current_paymentform)
+    return {'method': current_paymentform.to_dict()} , 200
+
+
+
+
 
 ## Create payment method for user
 @payment_method_routes.route('/<int:id>', methods = ['POST'])

@@ -1,0 +1,141 @@
+.virtual-card{
+    height: 160px;
+    width: 280px;
+    border: 1px solid rgba(0,0,0,.1);
+    padding: 20px;
+    border-radius: 12px;
+    display: flex;
+    /* justify-content: center; */
+
+}
+
+
+.bank-name-virutal-card{
+  display: flex;
+  font-weight: bolder;
+
+  /* justify-self: baseline; */
+
+
+}
+.card-info-container{
+    width: 100%;
+
+
+}
+
+
+.creditcardlastfour{
+    display: flex;
+    justify-content: left;
+    font-size: 18px;
+    margin-top: 20px;
+    font-family: Scto Grotesk A Bold;
+    font-weight: bolder;
+    /* justify-content: last baseline; */
+}
+
+
+.virtual-visa{
+    width: 86px;
+    height: 53px;
+    display: flex;
+    justify-content: flex-end;
+
+    /* width: 86px;
+    height: 53px;
+    display: flex;
+    margin-left: 0;
+    margin-right: 0; */
+    /* justify-content: flex-end; */
+}
+.single-image-div{
+    display: flex;
+    align-self: flex-end;
+    padding-left: 85px;
+    margin-bottom: 15px;
+    /* justify-content: right; */
+}
+
+.image-div-container{
+    width:100%;
+    display: flex;
+    margin-top: 100px;
+}
+
+
+.specifcpaymentcontainer{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.sending-money{
+    margin-top: 5px;
+    width:315px;
+    display: flex;
+    justify-content: space-between;;
+}
+
+
+.no-fee-text{
+    font-weight: bolder;
+
+}
+
+.sendingMoney-text{
+    color: #2f3033;
+    font-size: 16px;
+}
+
+.purchases-div{
+    width:315px;
+    display: flex;
+    justify-content: space-between;;
+    margin-bottom: 47px;
+}
+
+.purchases-text{
+    color: #2f3033;
+    font-size: 16px;
+}
+
+.Remove-button{
+    width:300px;
+    height: 45px;
+    border-radius: 20px;
+    color: #0074DE;
+    border-color: #0074DE;
+    background-color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+    /* box-shadow: 0 0 0 1px #0074de inset; */
+
+}
+
+.Remove-button:hover{
+    background-color: #0074de;;
+    color: white;
+    cursor: pointer;
+}
+
+.edit-button{
+    width:300px;
+    height: 45px;
+    border-radius: 20px;
+    color: #0074DE;
+    border-color: #0074DE;
+    background-color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 9px;
+}
+
+.edit-button:hover {
+    background-color: #0074de;;
+    color: white;
+    cursor: pointer;
+
+}

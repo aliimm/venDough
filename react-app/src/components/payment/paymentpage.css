@@ -1,0 +1,81 @@
+a:link {
+    text-decoration: none;
+  }
+
+  a:visited {
+    text-decoration: none;
+  }
+
+
+.visaimg{
+    width: 40px;
+    height: 25px;
+    object-fit: cover;
+    border: lightgray 1px solid;
+    border-radius: 7px;
+    margin-right: 8px;
+    margin-top: 4px;
+    margin-left: 2px;
+}
+
+
+
+
+.specific-card:hover{
+    background-color: #0074de;;
+    color: white;
+    /* border: solid black 1px; */
+    border-radius: 8px;
+
+}
+
+.div-payment{
+    width: 75%;
+}
+
+.specific-card{
+ display: flex;
+ height: 35px;
+ color: #6b6e76;
+ font-size: 14px;
+/* justify-content: center; */
+/* border: solid black 2px;
+border-radius: 40px;
+background-color: antiquewhite; */
+width: 300px;
+height: 5vh;
+margin-bottom: 5vh;
+
+}
+
+.All-cards{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.payment-method-title{
+    display: flex;
+    font-size: 24px;
+    font-family: Athletics Regular;
+    font-weight: 500;
+    line-height: 40px;
+    /* width: 100vw; */
+    justify-content: center;
+
+    margin-bottom: 80px;
+
+}
+
+
+.BankName{
+    font-size: 16px;
+    font-family: Scto Grotesk A Medium;
+    /* color: #2f3033; */
+}
+
+.bank-with-lastfour{
+    display: flex;
+    flex-direction: column;
+}

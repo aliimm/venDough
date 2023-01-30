@@ -1,0 +1,8 @@
+.sidebar{
+    height: 100vw;
+    width: 19vw;
+    display: block;
+    justify-content: center;
+    border-right: 1px lightgrey solid;
+
+}

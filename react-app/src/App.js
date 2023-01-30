@@ -10,13 +10,14 @@ import User from './components/User';
 import { authenticate } from './store/session';
 import PaymentMethods from './components/payment';
 import Sidebar from './components/sidebar';
+import PaymentDetails from './components/PaymentDetails';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    (async() => {
+    (async () => {
       await dispatch(authenticate());
       setLoaded(true);
     })();
@@ -26,30 +27,37 @@ function App() {
     return null;
   }
 
+
+
   return (
     <BrowserRouter>
-      <NavBar />
-      <Sidebar/>
-      <Switch>
-        <Route path='/login' exact={true}>
-          <LoginForm />
-        </Route>
-        <Route path='/sign-up' exact={true}>
-          <SignUpForm />
-        </Route>
-        <ProtectedRoute path='/users' exact={true} >
-          <UsersList/>
-        </ProtectedRoute>
-        <ProtectedRoute path='/users/:userId' exact={true} >
-          <User />
-        </ProtectedRoute>
-        <Route path='/' exact={true} >
-          <h1>My Home Page</h1>
-        </Route>
-        <Route path='/:id/payment-methods' exact={true} >
-          <PaymentMethods />
-        </Route>
-      </Switch>
+      {/* <NavBar /> */}
+      <div className='page-container'>
+      <Sidebar />
+        <Switch>
+          <Route path='/login' exact={true}>
+            <LoginForm />
+          </Route>
+          <Route path='/sign-up' exact={true}>
+            <SignUpForm />
+          </Route>
+          <ProtectedRoute path='/users' exact={true} >
+            <UsersList />
+          </ProtectedRoute>
+          <ProtectedRoute path='/users/:userId' exact={true} >
+            <User />
+          </ProtectedRoute>
+          <Route path='/' exact={true} >
+            <h1>My Home Page</h1>
+          </Route>
+          <Route path='/:id/payment-methods' exact={true} >
+            <PaymentMethods />
+          </Route>
+          <Route path='/:id/payment-method-details'>
+            <PaymentDetails />
+          </Route>
+        </Switch>
+      </div>
     </BrowserRouter>
   );
 }

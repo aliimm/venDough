@@ -1,1 +1,11 @@
 /* TODO Add site wide styles */
+.sidebar{
+    margin-top: -6.5rem;
+    width: 20%;
+}
+.page-container{
+    margin-top: 7rem;
+    /* width: 75%; */
+    display: flex;
+
+}
