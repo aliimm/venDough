@@ -30,12 +30,12 @@ class Transaction(db.Model):
     # user_recipient = db.relationship('User', back_populates = 'transaction_recipient')
 
 
-def to_dict(self):
-    return {
-        'id': self.id,
-        'sender': self.sender,
-        'recipient': self.recipient,
-        'payment_method': self.payment_method,
-        'amount': self.amount,
-        'message': self.message
-    }
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'sender_id': self.sender_id,
+            'recipient_id': self.recipient_id,
+            'payment_method': self.payment_method,
+            'amount': self.amount,
+            'message': self.message
+        }
