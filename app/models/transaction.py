@@ -1,4 +1,6 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
+import datetime
+
 
 
 class Transaction(db.Model):
@@ -17,6 +19,8 @@ class Transaction(db.Model):
     payment_method =  db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('methods.id')), nullable = False)
     amount = db.Column(db.Integer, nullable = False)
     message = db.Column(db.String(500), nullable = False)
+    pending = db.Column(db.Boolean, default = True, nullable = False)
+    created_at = db.Column(db.DateTime, default = datetime.datetime.utcnow)
 
     sender = db.relationship('User', backref='user_transactions', foreign_keys=sender_id)
     recipient = db.relationship("User", backref='recipient_transactions', foreign_keys=[recipient_id])
@@ -37,5 +41,8 @@ class Transaction(db.Model):
             'recipient_id': self.recipient_id,
             'payment_method': self.payment_method,
             'amount': self.amount,
-            'message': self.message
+            'message': self.message,
+            'pending': self.pending,
+            'created_at': self.created_at
+
         }

@@ -1,0 +1,25 @@
+.transaction-container{
+    width: 75%;
+
+
+}
+
+.paid-message{
+    color: #2F3033;
+    font-size: 17px;
+    /* font-size: 1rem; */
+    /* font-family: Scto Grotesk A Medium; */
+}
+
+.transaction-div{
+    border-bottom: #2F3033 solid 1px;
+    width: 662px;
+    /* display: flex;
+    justify-content: center; */
+}
+
+.all-transactions-div{
+    display: block;
+    flex-direction: column;
+    align-self: center;
+}

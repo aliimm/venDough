@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import { createMethod } from "../../store/methods";
 import { useModal } from '../../context/Modal';
+import './postpayment.css'
 
 
 
@@ -121,8 +122,8 @@ function CreatePaymentModal() {
                             </label>
                         </div>
                     </div>
-                    <div>
-                        <button className="newHome-button" type='submit'>Submit</button>
+                    <div className='submit-button-div'>
+                        <button className="submit-create-card" type='submit'>Submit</button>
                     </div>
                 </div>
             </form>
