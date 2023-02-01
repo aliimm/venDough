@@ -54,6 +54,9 @@ function App() {
           <ProtectedRoute path='/users/:userId' exact={true} >
             <User />
           </ProtectedRoute>
+          <Route path='/:id/send' exact={true} >
+            <CreateTransaction />
+          </Route>
           <Route path='/' exact={true} >
             {/* <h1>My Home Page</h1> */}
             {/* <NavBar /> */}
@@ -65,9 +68,7 @@ function App() {
           <Route path='/:id/payment-method-details'>
             <PaymentDetails />
           </Route>
-          <Route path=':id/send' exact={true} >
-            <CreateTransaction />
-          </Route>
+
         </Switch>
       </div>
     </BrowserRouter>

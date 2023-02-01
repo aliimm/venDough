@@ -32,7 +32,9 @@ const Sidebar = () => {
                 </div>
             </div>
             <div className='PayButton-sidebar-div'>
-                <button className='PayButton-sidebar'>Pay</button>
+                <button className='PayButton-sidebar'
+                onClick={() => history.push(`/${session.id}/send`)}
+                >Pay</button>
 
             </div>
 

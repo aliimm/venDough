@@ -15,18 +15,29 @@ const postTransactions = (transaction) => ({
 
 // CREATE TRANSACTION BASE ON USER ID
 export const createTransaction = (newTransaction, userId) => async (dispatch) => {
+    console.log('@@@##$$$',userId)
+    // const { recipient, payment_method, amount, message } = newTransaction;
     const response = await fetch(`/api/transactions/${userId}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
+        // body: JSON.stringify({
+        //     recipient,
+        //     payment_method,
+        //     amount,
+        //     message
+        //   }),
         body: JSON.stringify(newTransaction)
+
     })
-    console.log(response)
+    console.log('!!!!', response)
 
     if (response.ok) {
+        console.log('YOOOO')
         const createdNewTransaction = await response.json();
         dispatch(postTransactions(createdNewTransaction));
         return createdNewTransaction;
     }
+
 }
 
 //GET ALL TRANSACTIONS MAIN PAGE
@@ -59,7 +70,8 @@ const TransactionReducer = (state = initialState, action) => {
         case POST_TRANSACTIONS: {
             const newState = { ...state }
             const newObject = { ...state.transactions }
-            newObject[action.transactions.id] = action.transactions
+            console.log('ACTIONN', action)
+            newObject[action.transaction.id] = action.transaction
             newState.transactions = newObject
             return newState
         }

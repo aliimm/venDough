@@ -23,11 +23,12 @@ def create_transaction(id):
     print('made it here', form)
     if form.validate_on_submit():
 
-        new_transaction = TransactionForm(sender_id = id)
+        new_transaction = Transaction(sender_id = id)
         # new_method = Method()
 
         form.populate_obj(new_transaction)
-        # print('!!!!!', form.data)
+        # print('!!!!!', new_transaction.data)
+        # print("@@##", form.data)
 
         db.session.add(new_transaction)
         db.session.commit()

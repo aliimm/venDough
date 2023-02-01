@@ -20,12 +20,6 @@ function CreatePaymentModal() {
 
     const { closeModal } = useModal();
 
-    // useEffect(() => {
-    //     dispatch(getAllPayment(id))
-
-    // }, [userId, dispatch])
-
-
     const handleSubmit = async (e) => {
         e.preventDefault()
         setErrors([])
@@ -35,23 +29,6 @@ function CreatePaymentModal() {
             expiration: expiration,
             cvv: cvv,
         }
-
-        // return dispatch(createMethod(formData, userId))
-        // .catch(
-        //     async (res) => {
-        //         const data = await res.json();
-        //         if (data && data.errors) setErrors(data.errors);
-        //         if (data && data.message) setErrors([data.message])
-        //     }
-        //     )
-        //     .then(() => history.push('/'))
-        //     .then(() => (closeModal))
-        // if (test){
-
-        // closeModal
-        // // history.push('/')
-        // // .then(closeModal)
-        // }
 
 
         const test = await dispatch(createMethod(formData, userId))

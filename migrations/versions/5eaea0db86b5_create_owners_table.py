@@ -1,8 +1,8 @@
 """create owners table
 
-Revision ID: ee7469a61897
-Revises: 
-Create Date: 2023-01-31 12:44:50.537498
+Revision ID: 5eaea0db86b5
+Revises:
+Create Date: 2023-01-31 14:36:48.948743
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'ee7469a61897'
+revision = '5eaea0db86b5'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -46,8 +46,8 @@ def upgrade():
     sa.Column('payment_method', sa.Integer(), nullable=False),
     sa.Column('amount', sa.Integer(), nullable=False),
     sa.Column('message', sa.String(length=500), nullable=False),
-    sa.Column('pending', sa.Boolean(), nullable=False),
-    sa.Column('created_at', sa.DateTime(), nullable=True),
+    sa.Column('pending', sa.Boolean(), server_default='True', nullable=False),
+    sa.Column('created_at', sa.DateTime(), server_default=sa.text('now()'), nullable=True),
     sa.ForeignKeyConstraint(['payment_method'], ['methods.id'], ),
     sa.ForeignKeyConstraint(['recipient_id'], ['users.id'], ondelete='CASCADE'),
     sa.ForeignKeyConstraint(['sender_id'], ['users.id'], ondelete='CASCADE'),

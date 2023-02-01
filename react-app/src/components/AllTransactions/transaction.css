@@ -1,5 +1,5 @@
 .transaction-container{
-    width: 75%;
+    width: 85%;
 
 
 }
@@ -12,14 +12,21 @@
 }
 
 .transaction-div{
+    padding-top: 15px;
     border-bottom: #2F3033 solid 1px;
     width: 662px;
+    margin: 0 auto;
+    padding-bottom: 40px;
     /* display: flex;
     justify-content: center; */
 }
 
 .all-transactions-div{
-    display: block;
+    padding-top: 90px;
+    width: 100%;
+    border: 1px red solid;
+    display: flex;
     flex-direction: column;
+    justify-content: center;
     align-self: center;
 }
