@@ -7,16 +7,17 @@
 .paid-message{
     color: #2F3033;
     font-size: 17px;
+    font-family: "Scto Grotesk A","Helvetica Neue",Helvetica,Arial,sans-serif;
     /* font-size: 1rem; */
     /* font-family: Scto Grotesk A Medium; */
 }
 
 .transaction-div{
     padding-top: 15px;
-    border-bottom: #2F3033 solid 1px;
     width: 662px;
     margin: 0 auto;
-    padding-bottom: 40px;
+    /* padding-bottom: 40px; */
+    display: flex;
     /* display: flex;
     justify-content: center; */
 }
@@ -24,9 +25,43 @@
 .all-transactions-div{
     padding-top: 90px;
     width: 100%;
-    border: 1px red solid;
+    /* border: 1px red solid; */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-self: center;
+}
+
+
+.image-avi-alltransactions{
+    width: 55px;
+    height: 55px;
+    object-fit: cover;
+    border-radius: 50px;
+    border: #2F3033 solid 1px;
+
+}
+
+
+.paid-message-and-notes{
+    margin-left: 6px;
+    border-bottom: lightgray solid 1px;
+    width: 100%;
+    /* padding-bottom: 90px; */
+
+
+}
+
+
+.transaction-message{
+
+    padding-top: 20px;
+    padding-bottom: 25px;
+    font-size: 16px;
+    font-family: "Scto Grotesk A","Helvetica Neue",Helvetica,Arial,sans-serif;
+
+}
+
+.fa-earth-americas{
+    color: #888C94;
 }

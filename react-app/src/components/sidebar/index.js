@@ -20,36 +20,40 @@ const Sidebar = () => {
 
 
     return (
-        <div className='sidebar'>
-            <div className='vendough-logos'>
-                vendough
-            </div>
-            <div className='Profile-section'>
-                <img className='avi-sidebar' src='https://www.koimoi.com/wp-content/new-galleries/2022/11/drake-recently-dropped-a-hoax-video-interview-of-himself-in-which-he-talked-about-his-prn-preferences-001.jpg'></img>
-                <div className='name-username-sidebar'>
-                    <div className='welcome-customer'>Hi, {session.first_name}</div>
-                    <div className='username-sidebar'>@{session.username}</div>
+        <>
+            <div className='sidebar'>
+
+                <div className='vendough-logos'>
+                    <NavLink to='/home' className='navlink-home'>
+                        vendough
+                    </NavLink>
                 </div>
+                <div className='Profile-section'>
+                    <img className='avi-sidebar' src={session.profile_photo}></img>
+                    <div className='name-username-sidebar'>
+                        <div className='welcome-customer'>Hi, {session.first_name}</div>
+                        <div className='username-sidebar'>@{session.username}</div>
+                    </div>
+                </div>
+                <div className='PayButton-sidebar-div'>
+                    <button className='PayButton-sidebar'
+                        onClick={() => history.push(`/${session.id}/send`)}
+                    >Pay</button>
+
+                </div>
+
+
+
+
+                <NavLink to={`/${session.id}/payment-methods`}>
+                    Payment Methods
+                </NavLink>
+                <LogoutButton onClick={() => history.push('/')} />
             </div>
-            <div className='PayButton-sidebar-div'>
-                <button className='PayButton-sidebar'
-                onClick={() => history.push(`/${session.id}/send`)}
-                >Pay</button>
-
-            </div>
 
 
 
-
-            <NavLink to={`/${session.id}/payment-methods`}>
-                Payment Methods
-            </NavLink>
-            <LogoutButton onClick={history.push('/')} />
-        </div>
-
-
-
-
+        </>
 
     )
 

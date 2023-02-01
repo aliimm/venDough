@@ -18,7 +18,6 @@ import CreateTransaction from './components/PostTransaction';
 
 function App() {
 
-  // console.log(user)
 
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
@@ -59,7 +58,9 @@ function App() {
           </Route>
           <Route path='/' exact={true} >
             {/* <h1>My Home Page</h1> */}
-            {/* <NavBar /> */}
+            <NavBar />
+          </Route>
+          <Route path='/home'>
               <AllTransaction />
           </Route>
           <Route path='/:id/payment-methods' exact={true} >
