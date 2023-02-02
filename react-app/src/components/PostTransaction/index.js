@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import { createTransaction } from "../../store/transactions";
+import { getAllPayment } from '../../store/methods';
+
 import './transaction.css'
 
 const CreateTransaction = () => {
@@ -10,6 +12,10 @@ const CreateTransaction = () => {
     const { id } = useParams()
 
     const currentUser = useSelector(state => state.session.user.id)
+    const alluserCards = useSelector(state => state.methods.methods)
+    console.log(alluserCards)
+    const sessionCards = Object.values(alluserCards)
+
 
     console.log(id)
     const [payment_method, setPayment_method] = useState('')
@@ -20,6 +26,7 @@ const CreateTransaction = () => {
     const [users, setUsers] = useState([])
 
     useEffect(() => {
+        dispatch(getAllPayment(id))
 
         if (!users.length) {
 
@@ -31,17 +38,11 @@ const CreateTransaction = () => {
             fetchData()
         }
 
-    }, [], [dispatch])
-
-    console.log('list', users)
-
-
-
-
-
+    }, id, [], [dispatch])
 
     const handleSubmit = async (e) => {
         e.preventDefault()
+        const errors = []
         setErrors([])
 
         const formData = {
@@ -51,11 +52,14 @@ const CreateTransaction = () => {
             message: message,
         }
 
+        if(!formData[payment_method]) setErrors([...errors, 'Please select a Payment Method'])
+        // if(!formData[recipient]) setErrors([...errors, 'Please select a Recipient'])
+
+
 
         const test = await dispatch(createTransaction(formData, id))
             .catch(
                 async (res) => {
-                    console.log('RESSS', res)
                     const data = await res.json();
                     if (data && data.errors) setErrors(data.errors);
                     if (data && data.message) setErrors([data.message])
@@ -65,18 +69,8 @@ const CreateTransaction = () => {
             history.push('/home')
         }
 
-        // const test = await dispatch(createTransaction(formData, id))
-
-        // if (test && test.errors) {
-        //     setErrors([test.errors])
-
-        // } else {
-        //     history.push('/')
-        // }
-
-
-
     }
+    // document.getElementById("myDropdown").selectedIndex = -1;
 
 
 
@@ -104,12 +98,14 @@ const CreateTransaction = () => {
                                     required
                                     placeholder='0'
                                     name='amount'
+                                    min={1}
                                 />
                             </div>
                             <div >
-                                <label>
+                                <label id="myDropdown" className="recipient-label">
                                     recipient:
                                     <select onChange={(e) => setRecipient(e.target.value)} className='recipient-element' >
+                                        <option hidden selected>Select one...</option>
                                         {users.map(user => (
                                             <option value={user.id}>{user.username}</option>
                                         ))}
@@ -132,14 +128,15 @@ const CreateTransaction = () => {
                         </div>
                         <div >
                             <label>
-                                payment method
-                                <input
-                                    type='number'
-                                    onChange={(e) => setPayment_method(e.target.value)}
-                                    value={payment_method}
-                                    placeholder='payment method'
-                                    name="payment method"
-                                />
+                                <div className="payment-method-field-title">payment method:</div>
+                                <select id="myDropdown" className="payment-method-input" onChange={(e) => setPayment_method(e.target.value)}>
+                                    <option hidden selected>Select one...</option>
+                                    {sessionCards.map(card => (
+
+                                        <option value={card.id} >Debit Card •• {card.card_number.substr(-4)}</option>
+
+                                    ))}
+                                </select>
                             </label>
                         </div>
                         <div className='submit-button-div'>
