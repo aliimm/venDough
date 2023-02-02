@@ -23,6 +23,6 @@
     position: absolute;
     background-color:white;
     width: 460px;
-    height: 560px;
+    height: auto;
     border-radius: 14px;
   }

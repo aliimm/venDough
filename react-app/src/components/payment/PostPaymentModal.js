@@ -90,7 +90,7 @@ function CreatePaymentModal() {
                         )}
                     </ul >
                     <div className="form-elements">
-                        <div >
+                        <div className="padding-div">
                             <input
                                 className='form-box-login'
                                 type='number'
@@ -102,7 +102,7 @@ function CreatePaymentModal() {
 
                             />
                         </div>
-                        <div >
+                        <div className="padding-div">
                             <input
                                 className='form-box-login'
                                 type='date'
@@ -113,7 +113,7 @@ function CreatePaymentModal() {
                                 name='Expiration Date'
                             />
                         </div>
-                        <div>
+                        <div className="padding-div">
                             <input
                                 className='form-box-login'
                                 type='number'
