@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import { createMethod } from "../../store/methods";
 import { useModal } from '../../context/Modal';
+import './postpayment.css'
 
 
 
@@ -19,12 +20,6 @@ function CreatePaymentModal() {
 
     const { closeModal } = useModal();
 
-    // useEffect(() => {
-    //     dispatch(getAllPayment(id))
-
-    // }, [userId, dispatch])
-
-
     const handleSubmit = async (e) => {
         e.preventDefault()
         setErrors([])
@@ -34,23 +29,6 @@ function CreatePaymentModal() {
             expiration: expiration,
             cvv: cvv,
         }
-
-        // return dispatch(createMethod(formData, userId))
-        // .catch(
-        //     async (res) => {
-        //         const data = await res.json();
-        //         if (data && data.errors) setErrors(data.errors);
-        //         if (data && data.message) setErrors([data.message])
-        //     }
-        //     )
-        //     .then(() => history.push('/'))
-        //     .then(() => (closeModal))
-        // if (test){
-
-        // closeModal
-        // // history.push('/')
-        // // .then(closeModal)
-        // }
 
 
         const test = await dispatch(createMethod(formData, userId))
@@ -121,8 +99,8 @@ function CreatePaymentModal() {
                             </label>
                         </div>
                     </div>
-                    <div>
-                        <button className="newHome-button" type='submit'>Submit</button>
+                    <div className='submit-button-div'>
+                        <button className="submit-create-card" type='submit'>Submit</button>
                     </div>
                 </div>
             </form>

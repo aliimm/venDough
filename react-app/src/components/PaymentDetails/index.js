@@ -11,11 +11,10 @@ import './details.css'
 
 const PaymentDetails = () => {
     const dispatch = useDispatch();
-    const cardInfo = useSelector(state => state.methods.onePaymentMethod.method)
+    const cardInfo = useSelector(state => state.methods.onePaymentMethod?.method)
     const history = useHistory()
 
 
-    console.log(cardInfo)
 
     const { id } = useParams()
     console.log(id)
@@ -29,7 +28,6 @@ const PaymentDetails = () => {
 
     if (!cardInfo) return null
     const methodId = cardInfo.id
-    console.log('!!!', methodId)
 
     let message = ''
     const handleDeletion = async () => {

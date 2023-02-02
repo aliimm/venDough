@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from "react-redux";
 import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUpForm';
 import NavBar from './components/NavBar';
@@ -11,8 +11,15 @@ import { authenticate } from './store/session';
 import PaymentMethods from './components/payment';
 import Sidebar from './components/sidebar';
 import PaymentDetails from './components/PaymentDetails';
+import AllTransaction from './components/AllTransactions';
+import CreateTransaction from './components/PostTransaction';
+import HomePage from './components/HomePage';
+
+
 
 function App() {
+
+
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
 
@@ -33,7 +40,7 @@ function App() {
     <BrowserRouter>
       {/* <NavBar /> */}
       <div className='page-container'>
-      <Sidebar />
+        <Sidebar />
         <Switch>
           <Route path='/login' exact={true}>
             <LoginForm />
@@ -47,8 +54,16 @@ function App() {
           <ProtectedRoute path='/users/:userId' exact={true} >
             <User />
           </ProtectedRoute>
+          <Route path='/:id/send' exact={true} >
+            <CreateTransaction />
+          </Route>
           <Route path='/' exact={true} >
-            <h1>My Home Page</h1>
+            <HomePage/>
+            {/* <h1>My Home Page</h1> */}
+            {/* <NavBar /> */}
+          </Route>
+          <Route path='/home'>
+              <AllTransaction />
           </Route>
           <Route path='/:id/payment-methods' exact={true} >
             <PaymentMethods />
@@ -56,6 +71,7 @@ function App() {
           <Route path='/:id/payment-method-details'>
             <PaymentDetails />
           </Route>
+
         </Switch>
       </div>
     </BrowserRouter>

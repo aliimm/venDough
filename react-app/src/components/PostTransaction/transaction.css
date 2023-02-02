@@ -1,0 +1,144 @@
+.container-content {
+    /* display: flex;
+flex-direction: column; */
+
+
+}
+
+.container-content {
+    /* display: flex;
+    flex-direction: column; */
+}
+
+.form-elements {
+    display: flex;
+    flex-direction: column;
+}
+
+.pay-container {
+    padding-top: 90px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+
+.amount-form-box {
+    margin-left: 11px;
+    border: 0 transparent;
+    width: 145px;
+    height: 60px;
+    border-radius: 13px;
+    margin-top: 10px;
+    padding-left: 50px;
+    font-size: 50px;
+    font-family: "Scto Grotesk A", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+
+.notes-text-area-div {
+    width: 447px;
+    height: 133px;
+    padding-top: 27px;
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-bottom: 10px;
+    border: lightgray 1px solid;
+    border-radius: 9px;
+    font-family: "Scto Grotesk A", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+
+
+}
+
+
+.notes-text-area {
+    /* width: 400px; */
+    width: 100%;
+    height: 100%;
+    border: transparent 0px;
+    font-family: "Scto Grotesk A", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+
+
+}
+
+.recipient-element {
+    width: 447px;
+    height: 45px;
+    border-radius: 9px;
+    font-family: "Scto Grotesk A", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+
+}
+
+.submit-create-transaction {
+    width: 250px;
+    height: 45px;
+    border-radius: 20px;
+    color: #0074DE;
+    border-color: #0074DE;
+    background-color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 9px;
+}
+
+.amount-form-div {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    width: fit-content;
+    margin: 0 auto;
+}
+
+.money-sign-amount {
+    font-size: 50px;
+    position: absolute;
+    left: 13px;
+    top: 12px;
+}
+
+
+.recipient-element {
+    margin-top: 3px;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 25px;
+    font-family: "Scto Grotesk A", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+}
+
+.recipient-label{
+    font-family: "Scto Grotesk A", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+}
+
+.Pay-title {
+    display: flex;
+    justify-content: center;
+    font-size: 35px;
+    font-family: "Scto Grotesk A", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+}
+
+.payment-method-input{
+    margin-top: 3px;
+    width: 100%;
+    height: 45px;
+    border-radius: 9px;
+    margin-bottom: 20px;
+    font-family: "Scto Grotesk A", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+}
+.payment-method-field-title{
+    margin-top: 10px;
+    font-family: "Scto Grotesk A", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+}
+
+/*
+.option-selection-dropdown{
+    display: flex;
+    justify-content: center;
+} */

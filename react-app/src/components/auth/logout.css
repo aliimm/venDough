@@ -1,0 +1,13 @@
+.auth-me-logout{
+    border: 0 transparent;
+    font-size: 16px;
+    background-color: transparent;
+    font-family: "Scto Grotesk A", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: rgb(47,48,51);
+}
+
+.auth-me-logout:hover{
+    color: #0074DE;
+    cursor: pointer;
+
+}

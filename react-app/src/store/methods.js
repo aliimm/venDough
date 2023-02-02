@@ -135,11 +135,12 @@ const paymentMethodReducer = (state = initialState, action) => {
 
         case UPDATE_METHOD: {
             const newState = { ...state, onePaymentMethod: { ...state.onePaymentMethod } }
-            console.log("NEW stATE", newState)
-            console.log("THIS IS THE ID",action.method.id)
-            newState.onePaymentMethod[action.method.id] = action.method;
+            newState.onePaymentMethod.method = action.method;
             return newState
         }
+
+
+        
 
 
 

@@ -1,8 +1,135 @@
+.navlink-home{
+    text-decoration: none;
+    color: #0074DE;
+    font-size: 30px;
+    font-weight: 900;
+    font-family: "Scto Grotesk A", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+}
+
 .sidebar{
-    height: 100vw;
-    width: 19vw;
+    height: 100vh;
+    /* position: absolute; */
+    /* padding-top: 40px; */
+    width: 309px;
     display: block;
     justify-content: center;
     border-right: 1px lightgrey solid;
+    /* padding: -3.3rem 16px 1.7rem 40px; */
+}
 
+
+
+.vendough-logos{
+    color: #0074DE;
+    font-size: 30px;
+    font-weight: 900;
+    font-family: "Times New Roman", Times, serif;
+    margin-left: 27.2px;
+
+}
+
+
+.avi-sidebar{
+    height: 78px;
+    width: 78px;
+    object-fit: cover;
+    color: transparent;
+    overflow: hidden;
+    border-radius: 50px;
+}
+
+
+.Profile-section{
+    margin-left: 27.2px;
+    margin-top: 40px;
+    display: flex;
+    /* position: absolute; */
+    /* width: 25%; */
+}
+
+
+.welcome-customer{
+    font-family: "Scto Grotesk A", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+    font-size: 24px;
+    /* position: absolute;
+    right: 15;
+    top: 15; */
+
+}
+
+.username-sidebar{
+    font-size: 16px;
+    color: #0074DE;
+    font-family: "Scto Grotesk A", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+}
+
+.name-username-sidebar{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    margin-left: 5px;
+
+}
+
+
+.PayButton-sidebar-div{
+    margin-top: 40px;
+    margin-left: 27.2px;
+
+}
+
+.PayButton-sidebar{
+    width:250px;
+    height: 45px;
+    border-radius: 20px;
+    color: #fff;
+    border-color: #0074DE;
+    background-color: #0074DE;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 9px;
+    font-family: "Scto Grotesk A", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+
+}
+
+
+.paymentMethodsNavlink{
+    color: rgb(47,48,51);
+    margin-left: 27.2px;
+
+}
+
+.paymentMethodsNavlink:hover{
+    color: #0074DE;
+}
+
+
+.payment-method-div-sidebar{
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    font-size: 16px;
+    margin-top: 35px;
+    font-family: "Scto Grotesk A", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+
+}
+
+
+.linkedINsNavlink{
+    margin-top: 20px;
+    color: rgb(47,48,51);
+    margin-left: 27.2px;
+
+
+
+
+}
+
+.linkedINsNavlink:hover{
+    color: #0074DE;
 }
