@@ -1,0 +1,22 @@
+.form-elements-edit-card label{
+display: flex;
+flex-direction: column;
+
+}
+
+.form-elements-edit-card input{
+  padding: 3px;
+  margin-bottom: 10px;
+
+}
+
+.form-elements-edit-card{
+    padding: 15px;
+}
+
+.add-card-form-container{
+    padding: 15px;
+    height: fit-content;
+
+
+}
