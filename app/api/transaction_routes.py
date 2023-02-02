@@ -8,13 +8,14 @@ transaction_routes = Blueprint('transactions', __name__)
 # get all transactions for homepage
 
 @transaction_routes.route('/')
+# @login_required
 def all_transactions():
     transaction = Transaction.query.all()
     return {'transactions' :[transaction.to_dict() for transaction in transaction]} , 200
 
 
 @transaction_routes.route('/<int:id>', methods = ['POST'])
-# @login_required
+@login_required
 def create_transaction(id):
 
     form = TransactionForm()
@@ -42,6 +43,8 @@ def create_transaction(id):
         }, 400
 
 @transaction_routes.route('/<int:id>', methods=['DELETE'])
+@login_required
+
 def delete_transaction(id):
 
     specificTransaction = Transaction.query.get(id)

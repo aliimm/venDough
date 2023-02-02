@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+
 import LogoutButton from '../auth/LogoutButton'
 import { NavLink } from 'react-router-dom';
 import './sidebar.css'
-import { useHistory } from "react-router-dom";
+import { useHistory, Redirect } from "react-router-dom";
 
 
 
@@ -58,7 +59,7 @@ const Sidebar = () => {
                     </a>
 
                 <div className='linkedINsNavlink'>
-                <LogoutButton   onClick={() => history.push('/')} />
+                <LogoutButton onClick={() => history.push('/')} />
                 </div>
                 </div>
             </div>

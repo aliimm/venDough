@@ -28,9 +28,9 @@ moment.updateLocale("en", {
 
 const AllTransaction = () => {
   const dispatch = useDispatch()
-  const history = useHistory()
-  const transactionsO = useSelector(state => state.transactions.transactions)
-  const sessionuserId = useSelector(state => state.session.user.id)
+  // const history = useHistory()
+  const transactionsO = useSelector(state => state?.transactions?.transactions)
+  const sessionuserId = useSelector(state => state?.session.user?.id)
   console.log(sessionuserId)
   const transactionValues = Object.values(transactionsO)
   const [errors, setErrors] = useState([]);
@@ -70,12 +70,13 @@ const AllTransaction = () => {
     );
 
 }
-
+  // if(!!sessionuserId) return null
+  if(!transactionsO) return null
 
   // const selectedUser = users.find(user => user.username === transaction.sender_id)
   //transaction.recipient_id
   // console.log(users.find(user => user.id === 1).first_name)
-  return (
+  return transactionsO && (
     <div className='transaction-container'>
       <div className='all-transactions-div'>
         {transactionValues.reverse().map(transaction => (

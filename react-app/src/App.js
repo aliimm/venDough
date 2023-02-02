@@ -13,6 +13,7 @@ import Sidebar from './components/sidebar';
 import PaymentDetails from './components/PaymentDetails';
 import AllTransaction from './components/AllTransactions';
 import CreateTransaction from './components/PostTransaction';
+import HomePage from './components/HomePage';
 
 
 
@@ -57,8 +58,9 @@ function App() {
             <CreateTransaction />
           </Route>
           <Route path='/' exact={true} >
+            <HomePage/>
             {/* <h1>My Home Page</h1> */}
-            <NavBar />
+            {/* <NavBar /> */}
           </Route>
           <Route path='/home'>
               <AllTransaction />
