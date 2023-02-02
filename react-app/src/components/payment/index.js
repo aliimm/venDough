@@ -10,8 +10,8 @@ import OpenModalButton from '../OpenModalButton';
 const PaymentMethods = () => {
     const dispatch = useDispatch();
     const { id } = useParams()
-    const userId = useSelector(state => state.session.user.id)
-    const allPayments = useSelector(state => state.methods.methods)
+    const userId = useSelector(state => state.session.user?.id)
+    const allPayments = useSelector(state => state.methods?.methods)
 
 
     useEffect(() => {

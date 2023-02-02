@@ -1,0 +1,90 @@
+.nav-bar-div-splash {
+    /* width: 1440px; */
+    /* padding-top: 15px;
+    padding-bottom: 15px; */
+    height: 100px;
+    border-bottom: lightgrey solid 1px;
+}
+
+
+.vendough-logo-splash {
+    margin-top: 22px;
+
+    color: #0074DE;
+    font-size: 35px;
+    font-weight: 900;
+    font-family: "Scto Grotesk A", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: bold;
+}
+
+.img-spash{
+    max-width: 1440px;
+}
+
+
+.nav-bar-div-splash{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.log-in-navlink{
+    color: #0074DE;
+    font-weight: 600;
+    font-size: 16px;
+    display: flex;
+    align-self: center;
+    padding-right: 5px;
+    font-family: "Scto Grotesk A", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+}
+
+
+.log-in-plus-sign-up{
+    display: flex;
+    flex-direction: row;
+
+}
+
+
+.Get-vendough-div{
+    display: flex;
+    align-self: center;
+    border: 1.5px black solid;
+    border-radius: 25px;
+    width: 142px;
+    height: 44px;
+    font-weight: 600;
+    font-family: "Scto Grotesk A", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+
+
+}
+
+.get-vendough-text{
+    font-family: "Scto Grotesk A", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    display: flex;
+    align-self: center;
+    margin: 0 auto;
+    color: black;
+}
+
+.Get-vendough-div:hover{
+    background-color: #E4F2FF;
+}
+
+.built-with-tags{
+    font-family: "Scto Grotesk A", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    display: flex;
+    align-self: center;
+
+
+}
+
+
+.v-colored{
+color: #0074DE;
+font-weight: bold;
+font-family: "Scto Grotesk A", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+}

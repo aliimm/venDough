@@ -13,7 +13,7 @@ payment_method_routes = Blueprint('payments', __name__)
 
  ## Get all payment methods for specifc user
 @payment_method_routes.route('/<int:id>')
-# @login_required
+@login_required
 def all_payment_methods(id):
     payment = Method.query.filter(Method.user_id == id)
 
@@ -22,6 +22,7 @@ def all_payment_methods(id):
 
 ##Get ONE SPECFIC CARD
 @payment_method_routes.route('/<int:id>/specific')
+@login_required
 def payment_details(id):
 
     current_paymentform = Method.query.get(id)
@@ -38,7 +39,7 @@ def payment_details(id):
 
 ## Create payment method for user
 @payment_method_routes.route('/<int:id>', methods = ['POST'])
-# @login_required
+@login_required
 def create_payment(id):
 
     form = PaymentForm()
@@ -64,7 +65,7 @@ def create_payment(id):
 
 # UPDATE SPECIFIC PAYMENT METHOD BY METHODID
 @payment_method_routes.route('/<int:methodId>', methods=['PUT'])
-# @login_required
+@login_required
 def update_payment(methodId):
 
     specificMethod = Method.query.get(methodId)
@@ -81,6 +82,7 @@ def update_payment(methodId):
 
 # delete payment method by Method ID
 @payment_method_routes.route('/<int:methodId>', methods=['DELETE'])
+@login_required
 def delete_pay(methodId):
 
     specificMethod = Method.query.get(methodId)
