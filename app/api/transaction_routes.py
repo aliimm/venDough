@@ -40,3 +40,18 @@ def create_transaction(id):
         return {
             "errors": form.errors
         }, 400
+
+@transaction_routes.route('/<int:id>', methods=['DELETE'])
+def delete_transaction(id):
+
+    specificTransaction = Transaction.query.get(id)
+
+    if not specificTransaction:
+        return {"errors": "Payment Method not found"}, 404
+
+    # print('!!!@@@#####', specificTransaction)
+
+    db.session.delete(specificTransaction)
+    db.session.commit()
+
+    return {"message": 'successfully deleted'}

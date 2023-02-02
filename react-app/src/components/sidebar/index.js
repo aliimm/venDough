@@ -44,11 +44,23 @@ const Sidebar = () => {
 
 
 
+                <div className='payment-method-div-sidebar'>
+                    <NavLink to={`/${session.id}/payment-methods`} className='paymentMethodsNavlink'>
+                        Payment Methods
+                    </NavLink>
 
-                <NavLink to={`/${session.id}/payment-methods`}>
-                    Payment Methods
-                </NavLink>
-                <LogoutButton onClick={() => history.push('/')} />
+                    <a href="https://www.linkedin.com/in/alim-hussain-a86b72249/" className='linkedINsNavlink'>
+                        LinkedIn
+                    </a>
+
+                    <a href="https://github.com/aliimm" className='linkedINsNavlink'>
+                        GitHub
+                    </a>
+
+                <div className='linkedINsNavlink'>
+                <LogoutButton   onClick={() => history.push('/')} />
+                </div>
+                </div>
             </div>
 
 

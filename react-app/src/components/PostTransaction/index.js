@@ -22,8 +22,22 @@ const CreateTransaction = () => {
     const [recipient, setRecipient] = useState('')
     const [amount, setAmount] = useState('0')
     const [message, setMessage] = useState('')
-    const [errors, setErrors] = useState([]);
+    // const [errors, setErrors] = useState([]);
     const [users, setUsers] = useState([])
+    const [validationErrors, SetvalidationErrors] = useState([])
+    const [hasSubmitted, setHasSubmitted] = useState(false);
+
+    useEffect(() => {
+        const errors = []
+        if (!payment_method.length) errors.push('need to select payment')
+        if (!recipient.length)  errors.push('need to select recipient')
+
+
+
+        SetvalidationErrors(errors)
+    }, [payment_method, recipient])
+
+
 
     useEffect(() => {
         dispatch(getAllPayment(id))
@@ -38,12 +52,14 @@ const CreateTransaction = () => {
             fetchData()
         }
 
-    }, id, [], [dispatch])
+    }, id, [], [dispatch],)
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        const errors = []
-        setErrors([])
+        setHasSubmitted(true);
+        if (validationErrors.length) return alert('Cannot Submit');
+        // const errors = []
+        // setErrors([])
 
         const formData = {
             recipient_id: recipient,
@@ -52,7 +68,7 @@ const CreateTransaction = () => {
             message: message,
         }
 
-        if(!formData[payment_method]) setErrors([...errors, 'Please select a Payment Method'])
+        // if(!formData[payment_method]) setErrors([...errors, 'Please select a Payment Method'])
         // if(!formData[recipient]) setErrors([...errors, 'Please select a Recipient'])
 
 
@@ -61,8 +77,8 @@ const CreateTransaction = () => {
             .catch(
                 async (res) => {
                     const data = await res.json();
-                    if (data && data.errors) setErrors(data.errors);
-                    if (data && data.message) setErrors([data.message])
+                    // if (data && data.errors) setErrors(data.errors);
+                    // if (data && data.message) setErrors([data.message])
                 })
 
         if (test) {
@@ -80,13 +96,23 @@ const CreateTransaction = () => {
         <div className="pay-container">
             <div className="container-content">
                 <div className="Pay-title">Pay</div>
+                    <ul>
+                        {/* {validationErrors.map((error, idx) => (
+                                <li key={idx}>{error}</li>
+                            ))} */}
+                        {hasSubmitted && validationErrors.length > 0 && (
+                            <div>
+                                The following errors were found:
+                                <ul>
+                                    {validationErrors.map(error => (
+                                        <li key={error}>{error}</li>
+                                    ))}
+                                </ul>
+                            </div>
+                        )}
+                    </ul >
                 <form className="add-transaction-form-container" onSubmit={handleSubmit} >
                     <div>
-                        <ul>
-                            {errors.map((error, idx) => (
-                                <li key={idx}>{error}</li>
-                            ))}
-                        </ul >
                         <div >
                             <div className="amount-form-div">
                                 <div className="money-sign-amount">$</div>

@@ -2,9 +2,10 @@ import React from 'react'
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { getAllTransactions } from '../../store/transactions';
-import './transaction.css'
 import moment from 'moment'
-// import {getCurrentDate} from './utils'
+import { deleteATransaction } from '../../store/transactions';
+import './transaction.css'
+import { useHistory } from 'react-router-dom';
 
 moment.updateLocale("en", {
   relativeTime: {
@@ -27,8 +28,12 @@ moment.updateLocale("en", {
 
 const AllTransaction = () => {
   const dispatch = useDispatch()
+  const history = useHistory()
   const transactionsO = useSelector(state => state.transactions.transactions)
+  const sessionuserId = useSelector(state => state.session.user.id)
+  console.log(sessionuserId)
   const transactionValues = Object.values(transactionsO)
+  const [errors, setErrors] = useState([]);
   const [users, setUsers] = useState([])
 
   useEffect(() => {
@@ -45,6 +50,26 @@ const AllTransaction = () => {
     }
 
   }, [], [dispatch])
+
+  const TransactionDelete = async (transactionId) => {
+    return dispatch(deleteATransaction(transactionId))
+    // .then(() => history.push('/'))
+    .catch(
+        async (res) => {
+            if (!res.ok) {
+                const data = await res.json();
+                if (data.message.includes('Authentication required')) setErrors(['Need to be signed in to make or delete a review'])
+                else if (data && data.errors) setErrors(data.errors);
+                else if (data && data.message) setErrors([data.message])
+
+            }
+
+
+
+        }
+    );
+
+}
 
 
   // const selectedUser = users.find(user => user.username === transaction.sender_id)
@@ -64,6 +89,14 @@ const AllTransaction = () => {
               </div>
 
               <div className='transaction-message'>{transaction.message}</div>
+              {sessionuserId === transaction.sender_id &&
+                <>
+                  <button  className='Revert-transaction-button' onClick= {() => TransactionDelete(transaction.id)}>Revert Transaction</button>
+
+                </>
+
+              }
+
             </div>
           </div>
         ))

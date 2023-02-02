@@ -1,31 +1,24 @@
 .transaction-container{
     width: 85%;
-
-
 }
 
 .paid-message{
     color: #2F3033;
     font-size: 17px;
     font-family: "Scto Grotesk A","Helvetica Neue",Helvetica,Arial,sans-serif;
-    /* font-size: 1rem; */
-    /* font-family: Scto Grotesk A Medium; */
+
 }
 
 .transaction-div{
     padding-top: 15px;
     width: 662px;
     margin: 0 auto;
-    /* padding-bottom: 40px; */
     display: flex;
-    /* display: flex;
-    justify-content: center; */
 }
 
 .all-transactions-div{
     padding-top: 90px;
     width: 100%;
-    /* border: 1px red solid; */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -47,9 +40,6 @@
     margin-left: 6px;
     border-bottom: lightgray solid 1px;
     width: 100%;
-    /* padding-bottom: 90px; */
-
-
 }
 
 
@@ -64,4 +54,18 @@
 
 .fa-earth-americas{
     color: #888C94;
+}
+
+
+.Revert-transaction-button{
+    border: transparent 0;
+    background-color: transparent;
+    font-family: "Scto Grotesk A", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: rgb(47,48,51);
+
+}
+
+.Revert-transaction-button:hover{
+    color: red;
+    cursor: pointer;
 }

@@ -101,6 +101,7 @@ flex-direction: column; */
 
 
 .recipient-element {
+    margin-top: 3px;
     display: flex;
     justify-content: center;
     margin-bottom: 25px;
@@ -122,6 +123,7 @@ flex-direction: column; */
 }
 
 .payment-method-input{
+    margin-top: 3px;
     width: 100%;
     height: 45px;
     border-radius: 9px;
