@@ -9,6 +9,20 @@ flex-direction: column; */
     /* display: flex;
     flex-direction: column; */
 }
+.specifc-errors-payform{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    color: red;
+
+}
+
+.errors-pay-transaction{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+}
 
 .form-elements {
     display: flex;

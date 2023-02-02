@@ -11,10 +11,9 @@ const CreateTransaction = () => {
     const dispatch = useDispatch()
     const { id } = useParams()
 
-    const currentUser = useSelector(state => state.session.user.id)
-    const alluserCards = useSelector(state => state.methods.methods)
-    console.log(alluserCards)
-    const sessionCards = Object.values(alluserCards)
+    const currentUser = useSelector(state => state.session.user?.id)
+    const alluserCards = useSelector(state => state.methods?.methods)
+    const sessionCards = Object?.values(alluserCards)
 
 
     console.log(id)
@@ -95,8 +94,7 @@ const CreateTransaction = () => {
     return (
         <div className="pay-container">
             <div className="container-content">
-                <div className="Pay-title">Pay</div>
-                    <ul>
+                    <ul className="errors-pay-transaction">
                         {/* {validationErrors.map((error, idx) => (
                                 <li key={idx}>{error}</li>
                             ))} */}
@@ -105,12 +103,13 @@ const CreateTransaction = () => {
                                 The following errors were found:
                                 <ul>
                                     {validationErrors.map(error => (
-                                        <li key={error}>{error}</li>
+                                        <p className='specifc-errors-payform' key={error}>*{error}</p>
                                     ))}
                                 </ul>
                             </div>
                         )}
                     </ul >
+                <div className="Pay-title">Pay</div>
                 <form className="add-transaction-form-container" onSubmit={handleSubmit} >
                     <div>
                         <div >

@@ -1,3 +1,8 @@
+.homepage-container-div{
+    width: 100%;
+}
+
+
 .nav-bar-div-splash {
     /* width: 1440px; */
     /* padding-top: 15px;
@@ -18,7 +23,20 @@
 }
 
 .img-spash{
-    max-width: 1440px;
+    /* max-width: 1440px; */
+    width: 472px;
+    height: 566px;
+    position: absolute;
+    right: 220px;
+    top: 45px;
+
+}
+
+.img-container-splash{
+    /* width: fit-content; */
+    background-color: #E4F2FF;
+    position: relative;
+    height: 90vh;
 }
 
 
@@ -82,9 +100,26 @@
 }
 
 
-.v-colored{
-color: #0074DE;
-font-weight: bold;
-font-family: "Scto Grotesk A", "Helvetica Neue", Helvetica, Arial, sans-serif;
 
+
+.fast-safe-message{
+    font-size: 70px;
+    width: 495px;
+    height: 222px;
+    font-family: "Scto Grotesk A", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    position: absolute;
+    top: 170px;
+    left: 180px;
+    font-weight: 450;
+}
+
+.p-tag-splash{
+    width: 435px;
+    height: 45px;
+    position: absolute;
+    bottom: 180px;
+    left: 180px;
+    font-family: "Scto Grotesk A", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 20px;
+    font-weight: 300;
 }

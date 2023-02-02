@@ -57,6 +57,7 @@ def create_payment(id):
 
         return new_method.to_dict(), 200
 
+
     if form.errors:
         print(form.errors)
         return {
