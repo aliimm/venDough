@@ -13,7 +13,6 @@ const CreateTransaction = () => {
 
     const currentUser = useSelector(state => state.session.user?.id)
     const alluserCards = useSelector(state => state.methods?.methods)
-    console.log(alluserCards)
     const sessionCards = Object?.values(alluserCards)
 
 
