@@ -8,10 +8,6 @@ class Transaction(db.Model):
     if environment == "production":
         __table_args__ = {'schema': SCHEMA}
 
-
-
-
-
     id = db.Column(db.Integer, primary_key=True)
     sender_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id'), ondelete='CASCADE'), nullable = False)
     recipient_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id'), ondelete='CASCADE'), nullable = False)
