@@ -30,8 +30,10 @@ a:link {
 }
 
 .div-payment{
-    width: 75%;
+    width: 100vw;
     padding-top: 90px;
+    padding-left:309px;
+
 }
 
 .specific-card{

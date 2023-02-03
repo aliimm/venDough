@@ -9,9 +9,14 @@
 
 .sidebar{
     height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background-color: #fff;
     /* position: absolute; */
     /* padding-top: 40px; */
     width: 309px;
+    
     display: block;
     justify-content: center;
     border-right: 1px lightgrey solid;
