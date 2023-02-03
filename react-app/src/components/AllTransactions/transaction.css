@@ -18,11 +18,12 @@
 
 .all-transactions-div{
     padding-top: 90px;
-    width: 100%;
+    width: 100vw;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-self: center;
+    padding-left: 309px;
 }
 
 

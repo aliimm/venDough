@@ -19,6 +19,7 @@ import HomePage from './components/HomePage';
 
 function App() {
 
+    const user = useSelector(state => state.session.user)
 
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
@@ -57,14 +58,21 @@ function App() {
           <Route path='/:id/send' exact={true} >
             <CreateTransaction />
           </Route>
+
+          { user &&
+            <Route path='/' exact={true} >
+              <AllTransaction />
+
+          </Route>}
+
           <Route path='/' exact={true} >
             <HomePage/>
-            {/* <h1>My Home Page</h1> */}
-            {/* <NavBar /> */}
           </Route>
-          <Route path='/home'>
+
+          <Route path='/home' exact={true}>
               <AllTransaction />
           </Route>
+
           <Route path='/:id/payment-methods' exact={true} >
             <PaymentMethods />
           </Route>
