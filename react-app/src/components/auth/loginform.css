@@ -53,6 +53,8 @@ justify-content: center;
     height: 52px;
     border-radius: 20px;
     border:#0074DE 1px solid;
+    font-family: "Scto Grotesk A", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
 
 
 }
@@ -65,6 +67,8 @@ justify-content: center;
 
 .sign-up-button-on-sign-in{
     color: #0074DE;
+    font-family: "Scto Grotesk A", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
 }
 
 .sign-up-button-on-sign-in:hover{
