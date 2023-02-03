@@ -46,6 +46,10 @@ const Sidebar = () => {
 
 
                 <div className='payment-method-div-sidebar'>
+                    <NavLink to={`/home`} className='paymentMethodsNavlink-home'>
+                        Home
+                    </NavLink>
+
                     <NavLink to={`/${session.id}/payment-methods`} className='paymentMethodsNavlink'>
                         Payment Methods
                     </NavLink>
