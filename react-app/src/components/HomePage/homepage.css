@@ -1,4 +1,4 @@
-.homepage-container-div{
+.homepage-container-div {
     width: 100%;
 }
 
@@ -22,7 +22,7 @@
     font-weight: bold;
 }
 
-.img-spash{
+.img-spash {
     /* max-width: 1440px; */
     width: 472px;
     height: 566px;
@@ -32,20 +32,34 @@
 
 }
 
-.img-container-splash{
+.img-container-splash {
     /* width: fit-content; */
     background-color: #E4F2FF;
     position: relative;
-    height: 90vh;
+    height: 86vh;
+}
+
+.github-icon {
+    position: absolute;
+    right: 70px;
+    bottom: 10px;
 }
 
 
-.nav-bar-div-splash{
+.linkedin-icon {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+}
+
+
+
+.nav-bar-div-splash {
     display: flex;
     justify-content: space-evenly;
 }
 
-.log-in-navlink{
+.log-in-navlink {
     color: #0074DE;
     font-weight: 600;
     font-size: 16px;
@@ -57,14 +71,14 @@
 }
 
 
-.log-in-plus-sign-up{
+.log-in-plus-sign-up {
     display: flex;
     flex-direction: row;
 
 }
 
 
-.Get-vendough-div{
+.Get-vendough-div {
     display: flex;
     align-self: center;
     border: 1.5px black solid;
@@ -78,7 +92,7 @@
 
 }
 
-.get-vendough-text{
+.get-vendough-text {
     font-family: "Scto Grotesk A", "Helvetica Neue", Helvetica, Arial, sans-serif;
     display: flex;
     align-self: center;
@@ -86,11 +100,11 @@
     color: black;
 }
 
-.Get-vendough-div:hover{
+.Get-vendough-div:hover {
     background-color: #E4F2FF;
 }
 
-.built-with-tags{
+.built-with-tags {
     font-family: "Scto Grotesk A", "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 16px;
     display: flex;
@@ -102,7 +116,7 @@
 
 
 
-.fast-safe-message{
+.fast-safe-message {
     font-size: 70px;
     width: 495px;
     height: 222px;
@@ -113,7 +127,7 @@
     font-weight: 450;
 }
 
-.p-tag-splash{
+.p-tag-splash {
     width: 435px;
     height: 45px;
     position: absolute;

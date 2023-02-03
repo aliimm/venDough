@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { NavLink, Redirect } from 'react-router-dom';
+import { NavLink, Redirect, useHistory } from 'react-router-dom';
 import { login } from '../../store/session';
 import './loginform.css'
 
 const LoginForm = () => {
+  const history = useHistory()
   const [errors, setErrors] = useState([]);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -73,6 +74,7 @@ const LoginForm = () => {
           <button className='sign-in-button' type='submit'>Sign in</button>
           <button  className='demo-user-login' onClick={demoLogin} type='submit'>Demo User</button>
           <NavLink className='sign-up-button-on-sign-in' to='/sign-up'>Sign Up</NavLink>
+          <i class="fa-solid fa-house" onClick={() => history.push('/')}></i>
       </form>
     </div>
     </div>
