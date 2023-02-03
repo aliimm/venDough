@@ -140,7 +140,19 @@ const paymentMethodReducer = (state = initialState, action) => {
         }
 
 
-        
+        case DELETE_METHOD: {
+            const newState = {...state}
+            const newObject = {...state.methods}
+            console.log("@@###",newObject)
+            delete newObject[action.method]
+            console.log('DELETED', newObject)
+
+            newState.methods = newObject
+            return newState
+          }
+
+
+
 
 
 

@@ -1,8 +1,8 @@
 """create owners table
 
-Revision ID: 736a6f30dd6e
+Revision ID: a57f879d34bb
 Revises:
-Create Date: 2023-02-01 01:30:16.361477
+Create Date: 2023-02-03 11:11:31.462995
 
 """
 from alembic import op
@@ -13,7 +13,7 @@ environment = os.getenv("FLASK_ENV")
 SCHEMA = os.environ.get("SCHEMA")
 
 # revision identifiers, used by Alembic.
-revision = '736a6f30dd6e'
+revision = 'a57f879d34bb'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -57,13 +57,14 @@ def upgrade():
     sa.Column('message', sa.String(length=500), nullable=False),
     sa.Column('pending', sa.Boolean(), server_default='True', nullable=False),
     sa.Column('created_at', sa.DateTime(), server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=True),
-    sa.ForeignKeyConstraint(['payment_method'], ['methods.id'], ),
+    sa.ForeignKeyConstraint(['payment_method'], ['methods.id'], ondelete='CASCADE'),
     sa.ForeignKeyConstraint(['recipient_id'], ['users.id'], ondelete='CASCADE'),
     sa.ForeignKeyConstraint(['sender_id'], ['users.id'], ondelete='CASCADE'),
     sa.PrimaryKeyConstraint('id')
     )
     if environment == "production":
         op.execute(f"ALTER TABLE transactions SET SCHEMA {SCHEMA};")
+
     # ### end Alembic commands ###
 
 
