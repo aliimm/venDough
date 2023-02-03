@@ -18,7 +18,7 @@ class Method(db.Model):
 
     user = db.relationship('User', back_populates='method')
 
-    transaction = db.relationship('Transaction', back_populates='method')
+    # transaction = db.relationship('Transaction', back_populates='method')
 
     def to_dict(self):
         return {

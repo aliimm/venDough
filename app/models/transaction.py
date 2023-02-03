@@ -11,7 +11,7 @@ class Transaction(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     sender_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id'), ondelete='CASCADE'), nullable = False)
     recipient_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id'), ondelete='CASCADE'), nullable = False)
-    payment_method =  db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('methods.id')), nullable = False)
+    payment_method =  db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('methods.id'), ondelete='CASCADE'), nullable = False)
     amount = db.Column(db.Integer, nullable = False)
     message = db.Column(db.String(500), nullable = False)
     pending = db.Column(db.Boolean, server_default = "True", nullable = False)
@@ -23,7 +23,7 @@ class Transaction(db.Model):
 
 
 
-    method = db.relationship('Method', back_populates = 'transaction')
+    # method = db.relationship('Method', back_populates = 'transaction')
 
 
 
