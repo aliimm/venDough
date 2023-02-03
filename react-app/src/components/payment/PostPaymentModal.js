@@ -25,7 +25,7 @@ function CreatePaymentModal() {
     console.log(card_number.length)
     useEffect(() => {
         const errors = []
-        if (card_number.length !== 16) errors.push('needs to be 16 digits')
+        if (card_number.length !== 16) errors.push('Credit Card needs to be 16 digits')
 
 
 
@@ -60,9 +60,8 @@ function CreatePaymentModal() {
 
         }
     }
-
-
-
+console.log(new Date().toLocaleString().split(',')[0])
+    // const date = (new Date(Date.now()).toISOString())
 
     return (
         <>
@@ -111,6 +110,7 @@ function CreatePaymentModal() {
                                 required
                                 placeholder='Expiration Date'
                                 name='Expiration Date'
+                                min={new Date().toISOString().split('T')[0]}
                             />
                         </div>
                         <div className="padding-div">

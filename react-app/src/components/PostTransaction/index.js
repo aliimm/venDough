@@ -16,12 +16,10 @@ const CreateTransaction = () => {
     const sessionCards = Object?.values(alluserCards)
 
 
-    console.log(id)
     const [payment_method, setPayment_method] = useState('')
     const [recipient, setRecipient] = useState('')
     const [amount, setAmount] = useState('0')
     const [message, setMessage] = useState('')
-    // const [errors, setErrors] = useState([]);
     const [users, setUsers] = useState([])
     const [validationErrors, SetvalidationErrors] = useState([])
     const [hasSubmitted, setHasSubmitted] = useState(false);
@@ -30,8 +28,6 @@ const CreateTransaction = () => {
         const errors = []
         if (!payment_method.length) errors.push('need to select payment')
         if (!recipient.length)  errors.push('need to select recipient')
-
-
 
         SetvalidationErrors(errors)
     }, [payment_method, recipient])
@@ -57,8 +53,6 @@ const CreateTransaction = () => {
         e.preventDefault()
         setHasSubmitted(true);
         if (validationErrors.length) return alert('Cannot Submit');
-        // const errors = []
-        // setErrors([])
 
         const formData = {
             recipient_id: recipient,
@@ -66,11 +60,6 @@ const CreateTransaction = () => {
             amount: amount,
             message: message,
         }
-
-        // if(!formData[payment_method]) setErrors([...errors, 'Please select a Payment Method'])
-        // if(!formData[recipient]) setErrors([...errors, 'Please select a Recipient'])
-
-
 
         const test = await dispatch(createTransaction(formData, id))
             .catch(
@@ -85,19 +74,13 @@ const CreateTransaction = () => {
         }
 
     }
-    // document.getElementById("myDropdown").selectedIndex = -1;
-
-
-
+    const newusers = users?.filter(user => user.id !== currentUser)
 
 
     return (
         <div className="pay-container">
             <div className="container-content">
                     <ul className="errors-pay-transaction">
-                        {/* {validationErrors.map((error, idx) => (
-                                <li key={idx}>{error}</li>
-                            ))} */}
                         {hasSubmitted && validationErrors.length > 0 && (
                             <div>
                                 The following errors were found:
@@ -131,7 +114,7 @@ const CreateTransaction = () => {
                                     recipient:
                                     <select onChange={(e) => setRecipient(e.target.value)} className='recipient-element' >
                                         <option hidden selected>Select one...</option>
-                                        {users.map(user => (
+                                        {newusers.map(user => (
                                             <option value={user.id}>{user.username}</option>
                                         ))}
                                     </select>
@@ -142,6 +125,7 @@ const CreateTransaction = () => {
                             <div className="notes-text-area-div">
                                 <textarea
                                     className="notes-text-area"
+                                    // style="resize: none;"
                                     type='text'
                                     onChange={(e) => setMessage(e.target.value)}
                                     value={message}

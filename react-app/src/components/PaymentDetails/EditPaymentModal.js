@@ -114,6 +114,7 @@ function EditPaymentModal() {
                                 required
                                 placeholder='Expiration Date'
                                 name='Expiration Date'
+                                min={new Date().toISOString().split('T')[0]}
                             />
                         </label>
                         <label >
