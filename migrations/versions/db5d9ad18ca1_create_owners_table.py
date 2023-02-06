@@ -1,19 +1,16 @@
 """create owners table
 
-Revision ID: a57f879d34bb
-Revises:
-Create Date: 2023-02-03 11:11:31.462995
+Revision ID: db5d9ad18ca1
+Revises: 
+Create Date: 2023-02-05 19:18:39.767613
 
 """
 from alembic import op
 import sqlalchemy as sa
 
-import os
-environment = os.getenv("FLASK_ENV")
-SCHEMA = os.environ.get("SCHEMA")
 
 # revision identifiers, used by Alembic.
-revision = 'a57f879d34bb'
+revision = 'db5d9ad18ca1'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -33,9 +30,6 @@ def upgrade():
     sa.UniqueConstraint('email'),
     sa.UniqueConstraint('username')
     )
-    if environment == "production":
-        op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
-
     op.create_table('methods',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=False),
@@ -45,9 +39,6 @@ def upgrade():
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ondelete='CASCADE'),
     sa.PrimaryKeyConstraint('id')
     )
-    if environment == "production":
-        op.execute(f"ALTER TABLE methods SET SCHEMA {SCHEMA};")
-
     op.create_table('transactions',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('sender_id', sa.Integer(), nullable=False),
@@ -57,14 +48,10 @@ def upgrade():
     sa.Column('message', sa.String(length=500), nullable=False),
     sa.Column('pending', sa.Boolean(), server_default='True', nullable=False),
     sa.Column('created_at', sa.DateTime(), server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=True),
-    sa.ForeignKeyConstraint(['payment_method'], ['methods.id'], ondelete='CASCADE'),
     sa.ForeignKeyConstraint(['recipient_id'], ['users.id'], ondelete='CASCADE'),
     sa.ForeignKeyConstraint(['sender_id'], ['users.id'], ondelete='CASCADE'),
     sa.PrimaryKeyConstraint('id')
     )
-    if environment == "production":
-        op.execute(f"ALTER TABLE transactions SET SCHEMA {SCHEMA};")
-
     # ### end Alembic commands ###
 
 
