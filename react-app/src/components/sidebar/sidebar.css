@@ -16,7 +16,7 @@
     /* position: absolute; */
     /* padding-top: 40px; */
     width: 309px;
-    
+
     display: block;
     justify-content: center;
     border-right: 1px lightgrey solid;
@@ -109,6 +109,18 @@
 .paymentMethodsNavlink:hover{
     color: #0074DE;
 }
+
+.paymentMethodsNavlink-home{
+    color: rgb(47,48,51);
+    margin-left: 27.2px;
+    margin-bottom: 15px;
+
+}
+
+.paymentMethodsNavlink-home:hover{
+    color: #0074DE;
+}
+
 
 
 .payment-method-div-sidebar{
