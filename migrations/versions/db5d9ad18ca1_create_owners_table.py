@@ -1,12 +1,17 @@
 """create owners table
 
 Revision ID: db5d9ad18ca1
-Revises: 
+Revises:
 Create Date: 2023-02-05 19:18:39.767613
 
 """
 from alembic import op
 import sqlalchemy as sa
+
+
+import os
+environment = os.getenv("FLASK_ENV")
+SCHEMA = os.environ.get("SCHEMA")
 
 
 # revision identifiers, used by Alembic.
@@ -30,6 +35,9 @@ def upgrade():
     sa.UniqueConstraint('email'),
     sa.UniqueConstraint('username')
     )
+    if environment == "production":
+        op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
+
     op.create_table('methods',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=False),
@@ -39,6 +47,9 @@ def upgrade():
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ondelete='CASCADE'),
     sa.PrimaryKeyConstraint('id')
     )
+    if environment == "production":
+        op.execute(f"ALTER TABLE methods SET SCHEMA {SCHEMA};")
+
     op.create_table('transactions',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('sender_id', sa.Integer(), nullable=False),
@@ -52,6 +63,8 @@ def upgrade():
     sa.ForeignKeyConstraint(['sender_id'], ['users.id'], ondelete='CASCADE'),
     sa.PrimaryKeyConstraint('id')
     )
+    if environment == "production":
+        op.execute(f"ALTER TABLE transactions SET SCHEMA {SCHEMA};")
     # ### end Alembic commands ###
 
 
