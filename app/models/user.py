@@ -18,6 +18,7 @@ class User(db.Model, UserMixin):
     hashed_password = db.Column(db.String(255), nullable=False)
 
 
+    comments = db.relationship("Comment", cascade='all, delete-orphan', back_populates='user')
 
     method = db.relationship("Method", cascade='all, delete-orphan', back_populates = 'user')
 

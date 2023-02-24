@@ -1,11 +1,59 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required
 from app.models import Method, Transaction, db, User
+from app.models import Comment
 from ..forms.transaction_form import TransactionForm
+from ..forms.comment_form import CommentForm
 import datetime
 
 transaction_routes = Blueprint('transactions', __name__)
 # get all transactions for homepage
+
+# comments
+
+@transaction_routes.route('/<int:id>/comments')
+def all_comments(id):
+    comments = Comment.query.filter(Comment.song_id == id)
+
+    return {'comments' :[comment.to_dict() for comment in comments]} , 200
+
+#post comment
+@transaction_routes.route('/<int:id>/comments/new', methods=['POST'])
+@login_required
+def post_comment(id):
+
+    form = CommentForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+
+    if form.validate_on_submit():
+
+        new_comment = Comment()
+        form.populate_obj(new_comment)
+
+        db.session.add(new_comment)
+        db.session.commit()
+
+        return new_comment.to_dict(), 200
+
+
+    if form.errors:
+        return {
+            "errors": form.errors
+        }, 400
+
+
+@transaction_routes.route('/<int:id>')
+# @login_required
+def one_transactions(id):
+    specificTransaction = Transaction.query.get(id)
+
+    if not specificTransaction:
+        return {"errors": "Transaction does not exist"}, 404
+
+    return {'Transaction': specificTransaction.to_dict()} , 200
+
+
+
 
 @transaction_routes.route('/')
 # @login_required

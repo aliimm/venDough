@@ -21,6 +21,8 @@ class Transaction(db.Model):
     sender = db.relationship('User', backref='user_transactions', foreign_keys=sender_id)
     recipient = db.relationship("User", backref='recipient_transactions', foreign_keys=[recipient_id])
 
+    comments = db.relationship("Comment", cascade='all, delete-orphan', back_populates='transaction')
+
 
 
     # method = db.relationship('Method', back_populates = 'transaction')

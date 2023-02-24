@@ -5,7 +5,7 @@ import { getAllTransactions } from '../../store/transactions';
 import moment from 'moment'
 import { deleteATransaction } from '../../store/transactions';
 import './transaction.css'
-import { useHistory } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 moment.updateLocale("en", {
   relativeTime: {
@@ -90,11 +90,12 @@ const AllTransaction = () => {
               </div>
 
               <div className='transaction-message'>{transaction.message}</div>
+              <NavLink to={`/${transaction.id}/transaction`}><i class="fa-solid fa-comment fa-lg"></i></NavLink>
               {sessionuserId === transaction.sender_id &&
-                <>
+                <div>
                   <button  className='Revert-transaction-button' onClick= {() => TransactionDelete(transaction.id)}>Revert Transaction</button>
 
-                </>
+                </div>
 
               }
 

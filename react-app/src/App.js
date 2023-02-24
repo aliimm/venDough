@@ -14,6 +14,7 @@ import PaymentDetails from './components/PaymentDetails';
 import AllTransaction from './components/AllTransactions';
 import CreateTransaction from './components/PostTransaction';
 import HomePage from './components/HomePage';
+import TransactionDetails from './components/TransactionDetails';
 
 
 
@@ -58,6 +59,9 @@ function App() {
           <Route path='/:id/send' exact={true} >
             <CreateTransaction />
           </Route>
+          <Route path='/:id/send' exact={true} >
+            <CreateTransaction />
+          </Route>
 
           { user &&
             <Route path='/' exact={true} >
@@ -76,8 +80,8 @@ function App() {
           <Route path='/:id/payment-methods' exact={true} >
             <PaymentMethods />
           </Route>
-          <Route path='/:id/payment-method-details'>
-            <PaymentDetails />
+          <Route path='/:id/transaction'>
+            <TransactionDetails />
           </Route>
 
         </Switch>
