@@ -1,17 +1,17 @@
 import React, { useEffect } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import { getSpecficTransaction } from '../../store/transactions'
 
 const TransactionDetails = () => {
-    const { id } = useParams()
-    console.log(id)
     const dispatch = useDispatch()
+    const { id } = useParams()
 
     useEffect(() => {
         dispatch(getSpecficTransaction(id))
+    }, dispatch)
 
-    })
+    // const specificTransaction = useSelector(state => state)
 
 
   return (
