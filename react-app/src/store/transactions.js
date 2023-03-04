@@ -79,7 +79,7 @@ export const deleteATransaction = (id) => async (dispatch) => {
 }
 
 
-const initialState = { transactions: {},  singleransaction: {}  }
+const initialState = { transactions: {},  singleTransaction: {}  }
 
 
 const TransactionReducer = (state = initialState, action) => {
@@ -88,7 +88,7 @@ const TransactionReducer = (state = initialState, action) => {
         case GET_ONE_TRANSACTIONS:{
             const newState = { ...state }
             const specificSong = action.transaction.Transaction
-            newState.singleransaction = specificSong
+            newState.singleTransaction = specificSong
             return newState
         }
 
