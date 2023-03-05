@@ -11,9 +11,22 @@ transaction_routes = Blueprint('transactions', __name__)
 
 # comments
 
+@transaction_routes.route('/comments/<int:comment_id>', methods=['DELETE'])
+@login_required
+def delete_comment(comment_id):
+
+    print('comment_id', comment_id)
+    comment = Comment.query.get(comment_id)
+    print('comment------------', comment)
+
+    db.session.delete(comment)
+    db.session.commit()
+
+    return {"message": 'successfully deleted'}
+
 @transaction_routes.route('/<int:id>/comments')
 def all_comments(id):
-    comments = Comment.query.filter(Comment.song_id == id)
+    comments = Comment.query.filter(Comment.transaction_id == id)
 
     return {'comments' :[comment.to_dict() for comment in comments]} , 200
 

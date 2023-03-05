@@ -1,4 +1,6 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
+from sqlalchemy.sql import func
+
 
 class Comment(db.Model):
     __tablename__ = 'comments'
@@ -10,13 +12,12 @@ class Comment(db.Model):
     transaction_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id'), ondelete='CASCADE'), nullable = False)
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('transactions.id'), ondelete='CASCADE'), nullable = False)
     comment = db.Column(db.String, nullable = False)
+    created_at = db.Column(db.DateTime, server_default = func.now())
+
 
 
     user = db.relationship('User', back_populates='comments')
     transaction = db.relationship('Transaction', back_populates='comments')
-
-
-
 
 
     def to_dict(self):
@@ -25,4 +26,5 @@ class Comment(db.Model):
             'transaction_id': self.transaction_id,
             'user_id': self.user_id,
             'comment': self.comment,
+            'created_at': self.created_at
         }

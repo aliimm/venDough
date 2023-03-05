@@ -3,11 +3,14 @@ import thunk from 'redux-thunk';
 import session from './session'
 import paymentMethodReducer from './methods';
 import TransactionReducer from './transactions';
+import commentsReducer from './comments';
 
 const rootReducer = combineReducers({
   session,
   methods: paymentMethodReducer,
-  transactions: TransactionReducer
+  transactions: TransactionReducer,
+  comments: commentsReducer,
+
 });
 
 
