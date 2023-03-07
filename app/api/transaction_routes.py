@@ -15,9 +15,7 @@ transaction_routes = Blueprint('transactions', __name__)
 @login_required
 def delete_comment(comment_id):
 
-    print('comment_id', comment_id)
     comment = Comment.query.get(comment_id)
-    print('comment------------', comment)
 
     db.session.delete(comment)
     db.session.commit()

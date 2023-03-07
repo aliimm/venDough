@@ -48,3 +48,42 @@
 .comment-message-details{
     padding-top: 10px;
 }
+
+.make-comment-profile-img{
+    color: transparent;
+    width: 25px;
+    height: 25px;
+    object-fit: cover;
+    /* text-align: center; */
+    border-radius: 20px;
+}
+
+.make-comment-contianer{
+    border: 1px lightgrey solid;
+    display: flex;
+    justify-content: space-around;
+    padding: 4px;
+    border-radius: 9px;
+    margin-top: 10px;
+}
+
+.make-comment-contianer:hover {
+    border: #0074DE solid 1px;
+}
+
+.comment-input{
+    border: transparent solid;
+    width: 410px;
+}
+
+.comment-input:focus {
+    outline: none;
+}
+
+.post-comment-button{
+    background-color: transparent;
+    border: transparent;
+    cursor: pointer;
+    color: #0074DE;
+    font-weight: 700;
+}

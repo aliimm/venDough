@@ -5,7 +5,7 @@ import { useHistory, useParams } from 'react-router-dom'
 import { getSpecficTransaction } from '../../store/transactions'
 import './transactiondetails.css'
 import moment from 'moment'
-import { getAllComments, postAComment, deleteAComment} from '../../store/comments'
+import { getAllComments, postAComment, deleteAComment } from '../../store/comments'
 
 
 moment.updateLocale("en", {
@@ -64,33 +64,33 @@ const TransactionDetails = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         const payload = {
-          'transaction_id': Number(id),
-          'user_id': session.id,
-          'comment': newComment
+            'transaction_id': Number(id),
+            'user_id': session.id,
+            'comment': newComment
         }
         const postedComment = await dispatch(postAComment(id, payload))
-        .catch(
-          async (res) => {
-            const data = await res.json()
-            if(data && data.errors) setErrors(data.errors)
+            .catch(
+                async (res) => {
+                    const data = await res.json()
+                    if (data && data.errors) setErrors(data.errors)
 
-          }
-        )
-        if(postedComment) {
-          (history.push(`/${id}/transaction`))
+                }
+            )
+        if (postedComment) {
+            (history.push(`/${id}/transaction`))
         }
         setNewComment('')
-      }
+    }
 
-      let message = ''
+    let message = ''
 
-      const handleDeletion = async (commentId) => {
+    const handleDeletion = async (commentId) => {
         const response = await dispatch(deleteAComment(commentId))
         console.log('message', message)
-        if (response){
-          message = response.message
+        if (response) {
+            message = response.message
         }
-      }
+    }
 
 
 
@@ -132,18 +132,20 @@ const TransactionDetails = () => {
 
 
                 ))}
-                        <div className='comment-input'>
-                            <input
-                                type='text' required
-                                onChange={(e) => setNewComment(e.target.value)}
-                                value={newComment}
-                                placeholder='Write a Comment'>
-                            </input>
-                            <button
-                                className='post-comment-button'
-                                onClick={handleSubmit}
-                                >Post Comment</button>
-                        </div>
+                <div className='make-comment-contianer'>
+                    <img className='make-comment-profile-img' src={session.profile_photo}></img>
+                    <input
+                        className='comment-input'
+                        type='text' required
+                        onChange={(e) => setNewComment(e.target.value)}
+                        value={newComment}
+                        placeholder='Write a Comment ...'>
+                    </input>
+                    <button
+                        className='post-comment-button'
+                        onClick={handleSubmit}
+                    ><i class="fa-solid fa-paper-plane"></i> Submit </button>
+                </div>
 
 
 
