@@ -87,3 +87,20 @@
     color: #0074DE;
     font-weight: 700;
 }
+
+.tester{
+    /* color:rgb(136,140,148); */
+    color: #0074DE;
+
+}
+
+.icons-main-comment{
+    margin-bottom: 15px;
+    color: #0074DE;
+
+}
+
+.icons-main-comment-no-comments{
+    margin-bottom: 15px;
+    color:rgb(136,140,148);
+}

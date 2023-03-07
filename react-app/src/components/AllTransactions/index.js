@@ -5,7 +5,7 @@ import { getAllTransactions } from '../../store/transactions';
 import moment from 'moment'
 import { deleteATransaction } from '../../store/transactions';
 import './transaction.css'
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 
 moment.updateLocale("en", {
   relativeTime: {
@@ -28,6 +28,7 @@ moment.updateLocale("en", {
 
 const AllTransaction = () => {
   const dispatch = useDispatch()
+  const history = useHistory()
   // const history = useHistory()
   const transactionsO = useSelector(state => state?.transactions?.transactions)
   const sessionuserId = useSelector(state => state?.session.user?.id)
@@ -90,7 +91,7 @@ const AllTransaction = () => {
               </div>
 
               <div className='transaction-message'>{transaction.message}</div>
-              <NavLink to={`/${transaction.id}/transaction`}><i class="fa-solid fa-comment fa-lg"></i></NavLink>
+              <button className='comment-button-transaction-all'onClick={() => history.push(`/${transaction.id}/transaction`)}><i class="fa-solid fa-comment fa-lg"></i></button>
               {sessionuserId === transaction.sender_id &&
                 <div>
                   <button  className='Revert-transaction-button' onClick= {() => TransactionDelete(transaction.id)}>Revert Transaction</button>

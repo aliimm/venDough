@@ -72,3 +72,11 @@
     color: red;
     cursor: pointer;
 }
+
+.comment-button-transaction-all{
+    background-color: transparent;
+    border: transparent 0px;
+    cursor: pointer;
+    color: #888C94;
+    margin-bottom: 10px;
+}

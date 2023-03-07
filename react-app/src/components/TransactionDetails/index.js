@@ -106,6 +106,11 @@ const TransactionDetails = () => {
                     </div>
 
                     <div className='transaction-message'>{specificTransaction.message}</div>
+                    {Object.values(comments).length ?
+                        <div className='icons-main-comment'><i class="fa-solid fa-comment fa-lg"></i> {Object.values(comments).length}</div>
+                        : <div className='icons-main-comment-no-comments'><i class="fa-solid fa-comment fa-lg"></i></div>
+                    }
+
                 </div>
             </div>
             <div className='comments-container'>
@@ -116,7 +121,7 @@ const TransactionDetails = () => {
                             <div className='paid-message-details' ><b>{users.find(user => user?.id === comment?.user_id)?.first_name} <b>{users.find(user => user?.id === comment?.user_id)?.last_name}</b></b></div>
                             <div className='timestamp-comment-details'>
                                 {moment(comment.created_at).fromNow()}
-                                {comment.user_id === session.id &&
+                                {comment?.user_id === session?.id &&
 
                                     <div><button className='delete-comment' onClick={() => handleDeletion(comment.id)}><b>Delete</b></button></div>
                                 }
@@ -133,7 +138,7 @@ const TransactionDetails = () => {
 
                 ))}
                 <div className='make-comment-contianer'>
-                    <img className='make-comment-profile-img' src={session.profile_photo}></img>
+                    <img className='make-comment-profile-img' src={session?.profile_photo}></img>
                     <input
                         className='comment-input'
                         type='text' required
