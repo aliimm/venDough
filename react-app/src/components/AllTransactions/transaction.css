@@ -80,3 +80,11 @@
     color: #888C94;
     margin-bottom: 10px;
 }
+
+.user-liked-transaction{
+    border: 0 transparent;
+    background-color: transparent;
+    color: #888C94;
+    cursor: pointer;
+    padding-right: 10px;
+}

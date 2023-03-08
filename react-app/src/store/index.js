@@ -4,13 +4,15 @@ import session from './session'
 import paymentMethodReducer from './methods';
 import TransactionReducer from './transactions';
 import commentsReducer from './comments';
+import likesReducer from './likes';
+
 
 const rootReducer = combineReducers({
   session,
   methods: paymentMethodReducer,
   transactions: TransactionReducer,
   comments: commentsReducer,
-
+  likes: likesReducer
 });
 
 

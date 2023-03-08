@@ -6,6 +6,7 @@ import moment from 'moment'
 import { deleteATransaction } from '../../store/transactions';
 import './transaction.css'
 import { NavLink, useHistory } from 'react-router-dom';
+import { postALike } from '../../store/likes';
 
 moment.updateLocale("en", {
   relativeTime: {
@@ -31,11 +32,31 @@ const AllTransaction = () => {
   const history = useHistory()
   // const history = useHistory()
   const transactionsO = useSelector(state => state?.transactions?.transactions)
+  const likessession = useSelector(state => state?.likes?.likes)
+
+  const likesarray = Object.values(likessession)
+  console.log(likessession)
+  const likerrr = likesarray[0]
+
+  // const transactionsO = useSelector(state => state?.transactions?.transactions)
+  const sessionuser = useSelector(state => state?.session.user?.username)
   const sessionuserId = useSelector(state => state?.session.user?.id)
   console.log(sessionuserId)
   const transactionValues = Object.values(transactionsO)
   const [errors, setErrors] = useState([]);
   const [users, setUsers] = useState([])
+  const [likes, setLikes] = useState([])
+
+
+
+  const handleLike = async (transaction_id) => {
+
+    const payload = {
+      'users': Number(sessionuserId),
+      'transactions': transaction_id
+    }
+    return dispatch(postALike(payload, transaction_id))
+  }
 
   useEffect(() => {
     dispatch(getAllTransactions())
@@ -50,29 +71,36 @@ const AllTransaction = () => {
       fetchData()
     }
 
-  }, [], [dispatch])
+
+  }, [dispatch, likerrr, likesarray[1]])
+
+
 
   const TransactionDelete = async (transactionId) => {
     return dispatch(deleteATransaction(transactionId))
-    // .then(() => history.push('/'))
-    .catch(
+      // .then(() => history.push('/'))
+      .catch(
         async (res) => {
-            if (!res.ok) {
-                const data = await res.json();
-                if (data.message.includes('Authentication required')) setErrors(['Need to be signed in to make or delete a review'])
-                else if (data && data.errors) setErrors(data.errors);
-                else if (data && data.message) setErrors([data.message])
+          if (!res.ok) {
+            const data = await res.json();
+            if (data.message.includes('Authentication required')) setErrors(['Need to be signed in to make or delete a review'])
+            else if (data && data.errors) setErrors(data.errors);
+            else if (data && data.message) setErrors([data.message])
 
-            }
+          }
 
 
 
         }
-    );
+      );
 
-}
+  }
+
+
+
+
   // if(!!sessionuserId) return null
-  if(!transactionsO) return null
+  if (!transactionsO) return null
 
   // const selectedUser = users.find(user => user.username === transaction.sender_id)
   //transaction.recipient_id
@@ -90,11 +118,20 @@ const AllTransaction = () => {
                 {moment(transaction.created_at).fromNow()} <i className="fa-solid fa-earth-americas"></i>
               </div>
 
+
               <div className='transaction-message'>{transaction.message}</div>
-              <button className='comment-button-transaction-all'onClick={() => history.push(`/${transaction.id}/transaction`)}><i class="fa-solid fa-comment fa-lg"></i></button>
+              <button className='user-liked-transaction' onClick={() => handleLike(transaction.id).then(() => dispatch(getAllTransactions()))}><i class="fa-solid fa-heart fa-lg"></i>
+
+              {transaction?.likes?.length ?
+               <> {transaction?.likes?.length}</> :
+               <></>
+              }
+              </button>
+
+              <button className='comment-button-transaction-all' onClick={() => history.push(`/${transaction.id}/transaction`)}><i class="fa-solid fa-comment fa-lg"></i></button>
               {sessionuserId === transaction.sender_id &&
                 <div>
-                  <button  className='Revert-transaction-button' onClick= {() => TransactionDelete(transaction.id)}>Revert Transaction</button>
+                  <button className='Revert-transaction-button' onClick={() => TransactionDelete(transaction.id)}>Revert Transaction</button>
 
                 </div>
 
