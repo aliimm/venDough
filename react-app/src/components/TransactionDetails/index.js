@@ -5,6 +5,7 @@ import { useHistory, useParams } from 'react-router-dom'
 import { getSpecficTransaction } from '../../store/transactions'
 import './transactiondetails.css'
 import moment from 'moment'
+import { postALike } from '../../store/likes';
 import { getAllComments, postAComment, deleteAComment } from '../../store/comments'
 
 
@@ -92,6 +93,15 @@ const TransactionDetails = () => {
         }
     }
 
+    const handleLike = async () => {
+
+        const payload = {
+            'users': Number(session.id),
+            'transactions': specificTransaction.id
+        }
+        return dispatch(postALike(payload, specificTransaction.id))
+    }
+
 
 
 
@@ -106,11 +116,25 @@ const TransactionDetails = () => {
                     </div>
 
                     <div className='transaction-message'>{specificTransaction.message}</div>
-                    {Object.values(comments).length ?
-                        <div className='icons-main-comment'><i class="fa-solid fa-comment fa-lg"></i> {Object.values(comments).length}</div>
-                        : <div className='icons-main-comment-no-comments'><i class="fa-solid fa-comment fa-lg"></i></div>
-                    }
 
+                    <div className='like-comment-transaction-details'>
+                        {/* <div className='heart-transaction-details'><i class="fa-solid fa-heart fa-lg"></i></div> */}
+
+                        <button className='heart-transaction-details' onClick={() => handleLike().then(() => dispatch(getSpecficTransaction(id)))}><i class="fa-solid fa-heart fa-lg"></i>
+
+                            {specificTransaction?.likes?.length ?
+                                <> {specificTransaction?.likes?.length}</> :
+                                <></>
+                            }
+                        </button>
+
+
+
+                        {Object.values(comments).length ?
+                            <div className='icons-main-comment'><i class="fa-solid fa-comment fa-lg"></i> {Object.values(comments).length}</div>
+                            : <div className='icons-main-comment-no-comments'><i class="fa-solid fa-comment fa-lg"></i></div>
+                        }
+                    </div>
                 </div>
             </div>
             <div className='comments-container'>

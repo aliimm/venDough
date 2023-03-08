@@ -38,14 +38,10 @@ const AllTransaction = () => {
   console.log(likessession)
   const likerrr = likesarray[0]
 
-  // const transactionsO = useSelector(state => state?.transactions?.transactions)
-  const sessionuser = useSelector(state => state?.session.user?.username)
   const sessionuserId = useSelector(state => state?.session.user?.id)
-  console.log(sessionuserId)
   const transactionValues = Object.values(transactionsO)
   const [errors, setErrors] = useState([]);
   const [users, setUsers] = useState([])
-  const [likes, setLikes] = useState([])
 
 
 

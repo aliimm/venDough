@@ -104,3 +104,18 @@
     margin-bottom: 15px;
     color:rgb(136,140,148);
 }
+
+
+.like-comment-transaction-details{
+    display: flex;
+}
+
+
+.heart-transaction-details{
+    color:rgb(136,140,148);
+    padding-right: 10px;
+    cursor: pointer;
+    border: 0;
+    background-color: transparent;
+    height: 20px
+}

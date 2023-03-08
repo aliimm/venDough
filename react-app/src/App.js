@@ -80,9 +80,14 @@ function App() {
           <Route path='/:id/payment-methods' exact={true} >
             <PaymentMethods />
           </Route>
+          <Route path='/:id/payment-method-details' exact={true} >
+            <PaymentDetails />
+          </Route>
+
           <Route path='/:id/transaction'>
             <TransactionDetails />
           </Route>
+
 
         </Switch>
       </div>

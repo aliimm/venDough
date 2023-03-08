@@ -12,6 +12,8 @@ import './details.css'
 const PaymentDetails = () => {
     const dispatch = useDispatch();
     const cardInfo = useSelector(state => state.methods.onePaymentMethod?.method)
+    // const cardInfo = useSelector(state => state.methods.onePaymentMethod?.method)
+
     const history = useHistory()
 
 
