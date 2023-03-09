@@ -15,12 +15,13 @@ import AllTransaction from './components/AllTransactions';
 import CreateTransaction from './components/PostTransaction';
 import HomePage from './components/HomePage';
 import TransactionDetails from './components/TransactionDetails';
+import UserTransactions from './components/UserTransactions';
 
 
 
 function App() {
 
-    const user = useSelector(state => state.session.user)
+  const user = useSelector(state => state.session.user)
 
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
@@ -63,18 +64,22 @@ function App() {
             <CreateTransaction />
           </Route>
 
-          { user &&
+          {user &&
             <Route path='/' exact={true} >
               <AllTransaction />
 
-          </Route>}
+            </Route>}
 
           <Route path='/' exact={true} >
-            <HomePage/>
+            <HomePage />
           </Route>
 
           <Route path='/home' exact={true}>
-              <AllTransaction />
+            <AllTransaction />
+          </Route>
+
+          <Route path='/user-transactions' exact={true}>
+            <UserTransactions />
           </Route>
 
           <Route path='/:id/payment-methods' exact={true} >

@@ -88,7 +88,7 @@ const AllTransaction = () => {
 
           <div className='div-left-button-top'><NavLink className='all-trans-button-top-left' to='/home'><i class="fa-solid fa-people-arrows"></i></NavLink></div>
 
-          <div className='div-right-button-top'><NavLink className='all-trans-button-top-right' to='/userTrans'><i class="fa-solid fa-user fa-lg"></i></NavLink></div>
+          <div className='div-right-button-top'><NavLink className='all-trans-button-top-right' to='/user-transactions'><i class="fa-solid fa-user fa-lg"></i></NavLink></div>
 
 
         </div>
@@ -96,12 +96,19 @@ const AllTransaction = () => {
           <div className='transaction-div'>
             <div><img className='image-avi-alltransactions' src={users?.find(user => user?.id === transaction?.sender_id)?.profile_photo}></img></div>
             <div className='paid-message-and-notes'>
-              <div className='paid-message'><p><b>{users.find(user => user?.id === transaction?.sender_id)?.first_name} {users.find(user => user?.id === transaction?.sender_id)?.last_name}</b><span> paid</span> <b>{users?.find(user => user.id == transaction?.recipient_id)?.first_name} {users?.find(user => user.id == transaction?.recipient_id)?.last_name}</b></p></div>
+              <div className='paid-message'><p><b>
+                {users.find(user => user?.id === transaction?.sender_id)?.id === sessionuserId ? <>You</> : users.find(user => user?.id === transaction?.sender_id)?.first_name}<> </>
+                {users.find(user => user?.id === transaction?.sender_id)?.id === sessionuserId ? <></> :
+                  users.find(user => user?.id === transaction?.sender_id)?.last_name
+                }</b><span> paid</span> <b>
+                  {users.find(user => user?.id === transaction?.recipient_id)?.id === sessionuserId ? <>You</> : users.find(user => user?.id === transaction?.recipient_id)?.first_name}
+                  {users.find(user => user?.id === transaction?.recipient_id)?.id === sessionuserId ? <></> :
+                    users.find(user => user?.id === transaction?.recipient_id)?.last_name}
+                </b></p></div>
 
               <div>
                 {moment(transaction.created_at).fromNow()} <i className="fa-solid fa-earth-americas"></i>
               </div>
-
 
               <div className='transaction-message'>{transaction.message}</div>
               <button className='user-liked-transaction' onClick={() => handleLike(transaction.id).then(() => dispatch(getAllTransactions()))}><i class="fa-solid fa-heart fa-lg"></i>
