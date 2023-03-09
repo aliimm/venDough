@@ -95,6 +95,12 @@ const UserTransactions = () => {
 
 
                 </div>
+                {!filteredValues.length &&
+                    <div className='no-personal-trans'>No Personal Transactions Yet</div>
+
+
+                }
+
                 {filteredValues.reverse().map(transaction => (
                     <div className='transaction-div'>
                         <div><img className='image-avi-alltransactions' src={users?.find(user => user?.id === transaction?.sender_id)?.profile_photo}></img></div>
@@ -102,11 +108,11 @@ const UserTransactions = () => {
                             <div className='paid-message'><p><b>
                                 {users.find(user => user?.id === transaction?.sender_id)?.id === sessionuserId ? <>You</> : users.find(user => user?.id === transaction?.sender_id)?.first_name}<> </>
                                 {users.find(user => user?.id === transaction?.sender_id)?.id === sessionuserId ? <></> :
-                                users.find(user => user?.id === transaction?.sender_id)?.last_name
+                                    users.find(user => user?.id === transaction?.sender_id)?.last_name
                                 }</b><span> paid</span> <b>
-                                {users.find(user => user?.id === transaction?.recipient_id)?.id === sessionuserId ? <>You</> : users.find(user => user?.id === transaction?.recipient_id)?.first_name}
-                                {users.find(user => user?.id === transaction?.recipient_id)?.id === sessionuserId ? <></> :
-                                users.find(user => user?.id === transaction?.recipient_id)?.last_name}
+                                    {users.find(user => user?.id === transaction?.recipient_id)?.id === sessionuserId ? <>You</> : users.find(user => user?.id === transaction?.recipient_id)?.first_name}<> </>
+                                    {users.find(user => user?.id === transaction?.recipient_id)?.id === sessionuserId ? <></> :
+                                        users.find(user => user?.id === transaction?.recipient_id)?.last_name}
                                 </b></p></div>
 
                             <div>

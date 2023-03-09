@@ -138,6 +138,11 @@
     display: flex;
     justify-content: end;
     width: 60px;
+}
 
-
+.no-personal-trans{
+    font-family: "Scto Grotesk A", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
 }
