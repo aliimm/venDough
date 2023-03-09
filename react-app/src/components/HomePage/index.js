@@ -1,8 +1,17 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import './homepage.css'
+import ProgressBar from "@badrap/bar-of-progress";
+
+const progress = new ProgressBar();
 
 const HomePage = () => {
+
+    progress.start();
+
+    setTimeout(() => {
+        progress.finish();
+      }, 1000);
 
 
 

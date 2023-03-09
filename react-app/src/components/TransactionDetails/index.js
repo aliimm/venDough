@@ -7,6 +7,8 @@ import './transactiondetails.css'
 import moment from 'moment'
 import { postALike } from '../../store/likes';
 import { getAllComments, postAComment, deleteAComment } from '../../store/comments'
+import ProgressBar from "@badrap/bar-of-progress";
+const progress = new ProgressBar();
 
 
 moment.updateLocale("en", {
@@ -40,6 +42,8 @@ const TransactionDetails = () => {
 
 
     useEffect(() => {
+        progress.start();
+
         dispatch(getSpecficTransaction(id))
         dispatch(getAllComments(id))
 
@@ -52,6 +56,9 @@ const TransactionDetails = () => {
             }
             fetchData()
         }
+        setTimeout(() => {
+            progress.finish();
+          }, 1000);
 
     }, dispatch)
 

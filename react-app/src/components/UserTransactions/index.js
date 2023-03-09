@@ -6,6 +6,8 @@ import { deleteATransaction } from '../../store/transactions';
 import { getAllTransactions } from '../../store/transactions';
 import { postALike } from '../../store/likes';
 import moment from 'moment'
+import ProgressBar from "@badrap/bar-of-progress";
+const progress = new ProgressBar();
 // import './transaction.css'
 
 
@@ -44,18 +46,23 @@ const UserTransactions = () => {
 
 
     useEffect(() => {
+        progress.start();
+
         dispatch(getAllTransactions())
         if (!users.length) {
-            async function fetchData() {
+          async function fetchData() {
 
-                const response = await fetch('/api/users/')
-                const responseData = await response.json()
-                setUsers(responseData.users)
+            const response = await fetch('/api/users/')
+            const responseData = await response.json()
+            setUsers(responseData.users)
 
-            }
-            fetchData()
+          }
+          fetchData()
         }
-    }, [dispatch])
+        setTimeout(() => {
+          progress.finish();
+        }, 1000);
+      }, [dispatch])
 
 
 

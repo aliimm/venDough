@@ -3,8 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import { createTransaction } from "../../store/transactions";
 import { getAllPayment } from '../../store/methods';
-
+import ProgressBar from "@badrap/bar-of-progress";
 import './transaction.css'
+const progress = new ProgressBar();
 
 const CreateTransaction = () => {
     const history = useHistory()
@@ -35,6 +36,8 @@ const CreateTransaction = () => {
 
 
     useEffect(() => {
+        progress.start();
+
         dispatch(getAllPayment(id))
 
         if (!users.length) {
@@ -46,6 +49,9 @@ const CreateTransaction = () => {
             }
             fetchData()
         }
+        setTimeout(() => {
+            progress.finish();
+          }, 1000);
 
     }, id, [], [dispatch],)
 
