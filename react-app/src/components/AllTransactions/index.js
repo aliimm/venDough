@@ -7,6 +7,9 @@ import { getAllTransactions } from '../../store/transactions';
 import { postALike } from '../../store/likes';
 import moment from 'moment'
 import './transaction.css'
+import ProgressBar from "@badrap/bar-of-progress";
+
+const progress = new ProgressBar();
 
 
 
@@ -41,6 +44,8 @@ const AllTransaction = () => {
 
 
   useEffect(() => {
+    progress.start();
+
     dispatch(getAllTransactions())
     if (!users.length) {
       async function fetchData() {
@@ -52,6 +57,9 @@ const AllTransaction = () => {
       }
       fetchData()
     }
+    setTimeout(() => {
+      progress.finish();
+    }, 1000);
   }, [dispatch])
 
 

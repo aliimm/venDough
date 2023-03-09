@@ -6,7 +6,10 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
 import EditPaymentModal from './EditPaymentModal';
 import OpenModalButton from '../OpenModalButton';
+import ProgressBar from "@badrap/bar-of-progress";
 import './details.css'
+
+const progress = new ProgressBar();
 
 
 const PaymentDetails = () => {
@@ -23,7 +26,13 @@ const PaymentDetails = () => {
 
 
     useEffect(() => {
+        progress.start();
+
         dispatch(getOnePayment(id))
+
+        setTimeout(() => {
+            progress.finish();
+          }, 1000);
 
     }, [id, dispatch])
 
