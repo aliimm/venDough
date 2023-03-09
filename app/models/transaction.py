@@ -1,5 +1,7 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 from sqlalchemy.sql import func
+from .like import likes
+
 # import datetime
 
 class Transaction(db.Model):
@@ -21,12 +23,11 @@ class Transaction(db.Model):
     sender = db.relationship('User', backref='user_transactions', foreign_keys=sender_id)
     recipient = db.relationship("User", backref='recipient_transactions', foreign_keys=[recipient_id])
 
+    comments = db.relationship("Comment", cascade='all, delete-orphan', back_populates='transaction')
 
+    song_likes = db.relationship("User", secondary=likes, back_populates="user_likes")
 
     # method = db.relationship('Method', back_populates = 'transaction')
-
-
-
 
     def to_dict(self):
         return {
@@ -37,6 +38,7 @@ class Transaction(db.Model):
             'amount': self.amount,
             'message': self.message,
             'pending': self.pending,
-            'created_at': self.created_at
+            'created_at': self.created_at,
+            'likes': [p.to_dict() for p in self.song_likes]
 
         }

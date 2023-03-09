@@ -1,22 +1,23 @@
-.transaction-container{
+.transaction-container {
     width: 75%;
+
 }
 
-.paid-message{
+.paid-message {
     color: #2F3033;
     font-size: 17px;
-    font-family: "Scto Grotesk A","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-family: "Scto Grotesk A", "Helvetica Neue", Helvetica, Arial, sans-serif;
 
 }
 
-.transaction-div{
+.transaction-div {
     padding-top: 15px;
     width: 662px;
     margin: 0 auto;
     display: flex;
 }
 
-.all-transactions-div{
+.all-transactions-div {
     padding-top: 90px;
     width: 100vw;
     display: flex;
@@ -27,7 +28,7 @@
 }
 
 
-.image-avi-alltransactions{
+.image-avi-alltransactions {
     width: 55px;
     height: 55px;
     object-fit: cover;
@@ -37,36 +38,106 @@
 }
 
 
-.paid-message-and-notes{
+.paid-message-and-notes {
     margin-left: 6px;
     border-bottom: lightgray solid 1px;
     width: 100%;
 }
 
 
-.transaction-message{
+.transaction-message {
 
     padding-top: 20px;
     padding-bottom: 25px;
     font-size: 16px;
-    font-family: "Scto Grotesk A","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-family: "Scto Grotesk A", "Helvetica Neue", Helvetica, Arial, sans-serif;
 
 }
 
-.fa-earth-americas{
+.fa-earth-americas {
     color: #888C94;
 }
 
 
-.Revert-transaction-button{
+.Revert-transaction-button {
     border: transparent 0;
     background-color: transparent;
     font-family: "Scto Grotesk A", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    color: rgb(47,48,51);
+    color: rgb(47, 48, 51);
 
 }
 
-.Revert-transaction-button:hover{
+.Revert-transaction-button:hover {
     color: red;
     cursor: pointer;
+}
+
+.comment-button-transaction-all {
+    background-color: transparent;
+    border: transparent 0px;
+    cursor: pointer;
+    color: #888C94;
+    margin-bottom: 10px;
+}
+
+.user-liked-transaction {
+    border: 0 transparent;
+    background-color: transparent;
+    color: #888C94;
+    cursor: pointer;
+    padding-right: 10px;
+}
+
+.page-switch-all-trans {
+    border: rgb(85,88,94) 1px solid;
+    width: 160px;
+    height: 32px;
+    border-radius: 20px;
+}
+
+
+.page-switch-all-trans {
+    display: flex;
+    /* justify-content: space-around; */
+    align-items: center;
+    margin: 0 auto;
+
+}
+
+
+.all-trans-button-top-left {
+    color: white;
+    margin: 0 auto;
+}
+
+.div-left-button-top {
+    position: relative;
+    background-color: rgb(85,88,94);
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    /* padding-left: 80px;
+    padding-right: 20px; */
+    width: 100px;
+    height: 30px;
+    border-radius: 20px;
+    align-self: center;
+
+    /* width: 10px;
+    background-color: #2F3033; */
+
+}
+
+.all-trans-button-top-right{
+    margin: 0 auto;
+    color: rgb(85,88,94);
+}
+
+.div-right-button-top{
+    position: relative;
+    display: flex;
+    justify-content: end;
+    width: 60px;
+
+
 }
