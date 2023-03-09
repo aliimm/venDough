@@ -101,7 +101,7 @@ const AllTransaction = () => {
                 {users.find(user => user?.id === transaction?.sender_id)?.id === sessionuserId ? <></> :
                   users.find(user => user?.id === transaction?.sender_id)?.last_name
                 }</b><span> paid</span> <b>
-                  {users.find(user => user?.id === transaction?.recipient_id)?.id === sessionuserId ? <>You</> : users.find(user => user?.id === transaction?.recipient_id)?.first_name}
+                  {users.find(user => user?.id === transaction?.recipient_id)?.id === sessionuserId ? <>You</> : users.find(user => user?.id === transaction?.recipient_id)?.first_name}<> </>
                   {users.find(user => user?.id === transaction?.recipient_id)?.id === sessionuserId ? <></> :
                     users.find(user => user?.id === transaction?.recipient_id)?.last_name}
                 </b></p></div>
