@@ -1,0 +1,121 @@
+.details-container-transaction{
+    padding-top: 110px;
+    padding-left:309px;
+}
+
+
+.paid-message-and-notes-details{
+    margin-left: 6px;
+    width: 100%;
+}
+
+
+.details-container-transaction{
+    margin: 0 auto;
+}
+
+.comments-div{
+    border-top: 1px rgb(204,204,204) solid;
+    display: flex;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+.comments-container{
+    padding-left: 55px;
+}
+
+
+.comment-details-div{
+    margin-left: 5px;
+    width: 100%;
+}
+
+.timestamp-comment-details{
+    padding-top: 6px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+.delete-comment{
+    border: 0px transparent;
+    background-color: transparent;
+    color: #0074DE;
+    font-family: "Scto Grotesk A","Helvetica Neue",Helvetica,Arial,sans-serif;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.comment-message-details{
+    padding-top: 10px;
+}
+
+.make-comment-profile-img{
+    color: transparent;
+    width: 25px;
+    height: 25px;
+    object-fit: cover;
+    /* text-align: center; */
+    border-radius: 20px;
+}
+
+.make-comment-contianer{
+    border: 1px lightgrey solid;
+    display: flex;
+    justify-content: space-around;
+    padding: 4px;
+    border-radius: 9px;
+    margin-top: 10px;
+}
+
+.make-comment-contianer:hover {
+    border: #0074DE solid 1px;
+}
+
+.comment-input{
+    border: transparent solid;
+    width: 410px;
+}
+
+.comment-input:focus {
+    outline: none;
+}
+
+.post-comment-button{
+    background-color: transparent;
+    border: transparent;
+    cursor: pointer;
+    color: #0074DE;
+    font-weight: 700;
+}
+
+.tester{
+    /* color:rgb(136,140,148); */
+    color: #0074DE;
+
+}
+
+.icons-main-comment{
+    margin-bottom: 15px;
+    color: #0074DE;
+
+}
+
+.icons-main-comment-no-comments{
+    margin-bottom: 15px;
+    color:rgb(136,140,148);
+}
+
+
+.like-comment-transaction-details{
+    display: flex;
+}
+
+
+.heart-transaction-details{
+    color:rgb(136,140,148);
+    padding-right: 10px;
+    cursor: pointer;
+    border: 0;
+    background-color: transparent;
+    height: 20px
+}

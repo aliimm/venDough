@@ -1,4 +1,5 @@
 const GET_ALL_TRANSACTIONS = 'transaction/GET_ALL_TRANSACTIONS'
+const GET_ONE_TRANSACTIONS = 'transaction/GET_ONE_TRANSACTIONS'
 const POST_TRANSACTIONS = 'transaction/POST_TRANSACTIONS'
 const DELETE_TRANSACTIONS = 'transaction/DELETE_TRANSACTIONS'
 
@@ -6,6 +7,11 @@ const DELETE_TRANSACTIONS = 'transaction/DELETE_TRANSACTIONS'
 const getAllTransaction = (transactions) => ({
     type: GET_ALL_TRANSACTIONS,
     transactions
+})
+
+const getOneTransaction = (transaction) => ({
+    type: GET_ONE_TRANSACTIONS,
+    transaction
 })
 
 const postTransactions = (transaction) => ({
@@ -17,6 +23,19 @@ const deleteTransactions = (transaction) => ({
     type: DELETE_TRANSACTIONS,
     transaction
 })
+
+
+
+export const getSpecficTransaction = (id) => async (dispatch) => {
+    const response = await fetch(`/api/transactions/${id}`);
+    if (response.ok) {
+
+        const transaction = await response.json();
+        dispatch(getOneTransaction(transaction));
+    }
+    return response
+}
+
 
 
 // CREATE TRANSACTION BASE ON USER ID
@@ -60,13 +79,18 @@ export const deleteATransaction = (id) => async (dispatch) => {
 }
 
 
-
-
-const initialState = { transactions: {} }
+const initialState = { transactions: {},  singleTransaction: {}  }
 
 
 const TransactionReducer = (state = initialState, action) => {
     switch (action.type) {
+
+        case GET_ONE_TRANSACTIONS:{
+            const newState = { ...state }
+            const specificSong = action.transaction.Transaction
+            newState.singleTransaction = specificSong
+            return newState
+        }
 
         case GET_ALL_TRANSACTIONS: {
             const newState = { transactions: {} }
@@ -91,7 +115,7 @@ const TransactionReducer = (state = initialState, action) => {
             newState.transactions = newObject
             return newState
           }
-          
+
 
         default:
             return state
