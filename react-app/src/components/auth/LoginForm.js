@@ -3,6 +3,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import { NavLink, Redirect, useHistory } from 'react-router-dom';
 import { login } from '../../store/session';
 import './loginform.css'
+import ProgressBar from "@badrap/bar-of-progress";
+
+const progress = new ProgressBar();
 
 const LoginForm = () => {
   const history = useHistory()
@@ -21,9 +24,16 @@ const LoginForm = () => {
   };
 
   const demoLogin = () => {
+    progress.start();
+
     setEmail('demo@aa.io')
     setPassword('password')
-    return dispatch(login(email, password));
+    return dispatch(login(email, password))
+    .then(   setTimeout(() => {
+      progress.finish();
+    }, 1000))
+
+
   }
 
   const updateEmail = (e) => {

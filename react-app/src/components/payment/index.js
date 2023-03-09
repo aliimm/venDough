@@ -5,6 +5,8 @@ import { useParams, useHistory, NavLink } from 'react-router-dom';
 import './paymentpage.css'
 import CreatePaymentModal from './PostPaymentModal';
 import OpenModalButton from '../OpenModalButton';
+import ProgressBar from "@badrap/bar-of-progress";
+const progress = new ProgressBar();
 
 
 const PaymentMethods = () => {
@@ -15,8 +17,13 @@ const PaymentMethods = () => {
 
 
     useEffect(() => {
+        progress.start();
+
         dispatch(getAllPayment(id))
 
+        setTimeout(() => {
+            progress.finish();
+          }, 1000);
     }, [userId, dispatch])
 
     // if(!allpayment) return null
